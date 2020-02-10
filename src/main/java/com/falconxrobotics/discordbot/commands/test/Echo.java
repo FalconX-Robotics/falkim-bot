@@ -3,6 +3,7 @@ package com.falconxrobotics.discordbot.commands.test;
 import com.github.raybipse.components.Command;
 import com.github.raybipse.components.CommandGroup;
 
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 /**
@@ -43,6 +44,13 @@ public class Echo extends Command {
     }
 
     @Override
+    public EmbedBuilder getEmbedInfo() {
+        EmbedBuilder builder = super.getEmbedInfo();
+        builder.addField("Tip", "Add quotation marks around the message to echo a sentence without sending multiple messages.", false);
+        return builder;
+    }
+
+    @Override
     public void onMessageReceived(MessageReceivedEvent event) {
         String messageContent = event.getMessage().getContentDisplay();
         if (event.getAuthor().isBot())
@@ -58,11 +66,9 @@ public class Echo extends Command {
         } else if (arguments.length == 1) {
             event.getChannel().sendMessage(arguments[0]).queue();
         } else {
-            StringBuilder builder = new StringBuilder();
             for (String arg : arguments) {
-                builder.append(arg + " ");
+                event.getChannel().sendMessage(arg).queue();
             }
-            event.getChannel().sendMessage(builder.substring(0, builder.length() - 1)).queue();
         }
     }
 }

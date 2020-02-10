@@ -19,12 +19,14 @@ import net.dv8tion.jda.api.exceptions.PermissionException;
 public class Cool extends Command {
 
     public Cool() {
-        requireRoles(Set.<Role>of(BotConfiguration.getJDA().getGuildById(384880977773854720L).getRoleById(481962341445926913L)));
-        setOnRolePermissionFail((event) -> 
-                event.getChannel().sendMessage(new EmbedBuilder()
-                    .setDescription("Did you SERIOUSLY think you're cool? You're pathetic.")
-                    .setColor(BotConfiguration.getErrorColor())
-                    .build()).queue());
+        if (BotConfiguration.getJDA().getGuildById(384880977773854720L) != null) {
+            requireRoles(Set.<Role>of(BotConfiguration.getJDA().getGuildById(384880977773854720L).getRoleById(481962341445926913L)));
+            setOnRolePermissionFail((event) -> 
+                    event.getChannel().sendMessage(new EmbedBuilder()
+                        .setDescription("Did you SERIOUSLY think you're cool? You're pathetic.")
+                        .setColor(BotConfiguration.getErrorColor())
+                        .build()).queue());
+        }
     }
 
     @Override

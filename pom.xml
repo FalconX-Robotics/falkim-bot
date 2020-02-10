@@ -20,7 +20,7 @@
         <dependency>
             <groupId>com.github.raybipse</groupId>
             <artifactId>java-command-bot</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.2</version>
         </dependency>
     </dependencies>
     <build>
