@@ -14,6 +14,7 @@ public class Test extends CommandGroup {
     private Test.Help help = new Test.Help();
     private Echo echo = new Echo();
     private Cool cool = new Cool();
+    private EchoTo echoto = new EchoTo();
 
     private Test() {
     }
@@ -40,7 +41,7 @@ public class Test extends CommandGroup {
 
     @Override
     public Command[] getChildren() {
-        return new Command[] { help, echo, cool };
+        return new Command[] { help, echo, echoto, cool };
     }
 
     @Override
