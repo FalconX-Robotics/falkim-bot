@@ -56,7 +56,7 @@ public class LaTex extends Command {
             return;
 
         String input = trimInputBeginning(messageContent);
-        
+
         if (input.isEmpty()) {
             event.getChannel().sendMessage(getEmbedMissingArguments().build()).queue();
             return;
@@ -67,8 +67,9 @@ public class LaTex extends Command {
             return;
         }
 
-        event.getChannel().sendMessage(new EmbedBuilder().setImage("http://latex.codecogs.com/png.latex?\\bg_white&space;\\large&space;" + input).build()).queue();
-
+        event.getChannel().sendMessage(new EmbedBuilder()
+                .setImage("http://latex.codecogs.com/png.latex?\\bg_white&space;\\large&space;" + input).build())
+                .queue();
     }
 
 }
