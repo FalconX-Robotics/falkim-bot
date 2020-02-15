@@ -83,7 +83,7 @@ public class Top extends Command {
 
                 if ((boolean) data.get("over_18") || (boolean) data.get("quarantine")) {
                     event.getChannel().sendMessage(
-                            getEmbedSimpleError("Unappropriate Post", "The returned post is marked as NSFW or quarantined.")
+                            getEmbedSimpleError("Inappropriate Post", "The returned post is marked as NSFW or quarantined.")
                                     .build())
                             .queue();
                     return;
