@@ -2,7 +2,10 @@ package com.falconxrobotics.discordbot;
 
 import javax.security.auth.login.LoginException;
 
+import com.falconxrobotics.discordbot.commands.Dice;
 import com.falconxrobotics.discordbot.commands.Help;
+import com.falconxrobotics.discordbot.commands.LaTex;
+import com.falconxrobotics.discordbot.commands.music.Music;
 import com.falconxrobotics.discordbot.commands.reddit.Reddit;
 import com.falconxrobotics.discordbot.commands.test.Test;
 import com.github.raybipse.components.Command;
@@ -20,6 +23,8 @@ public class Bot {
 
     private static JDA jda;
     private static Help helpCommand;
+    private static Dice dice;
+    private static LaTex latex;
 
     private Bot() {
     }
@@ -38,7 +43,10 @@ public class Bot {
             // Do not instantiate commands before jda.awaitReady() is ran
             Test.getInstance();
             Reddit.getInstance();
+            Music.getInstance();
+            dice = new Dice();
             helpCommand = new Help();
+            latex = new LaTex();
 
             jda.getPresence().setActivity(Activity.listening(BotConfiguration.getBotPrefix() + helpCommand.getPrefix()));
         } catch (NullPointerException irte) {
@@ -56,7 +64,7 @@ public class Bot {
 
     public static Command[] getAllStandaloneCommands() {
         return new Command[] {
-            helpCommand
+            helpCommand, dice, latex
         };
     }
 }
