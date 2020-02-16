@@ -70,7 +70,6 @@ public class LaTex extends Command {
         }
 
         try {
-            System.out.println("a");
             event.getChannel().sendFile(
                     new URL("http://latex.codecogs.com/png.latex?\\bg_white&space;\\large&space;" + input).openStream(),
                     "latex.png").queue();

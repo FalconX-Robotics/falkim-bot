@@ -64,8 +64,6 @@ public class EchoTo extends Command {
         messageContent = trimInputBeginning(messageContent);
         String[] arguments = splitUserInput(messageContent);
 
-        System.out.println(arguments[0]);
-
         if (arguments.length < 2) {
             event.getChannel().sendMessage(getEmbedMissingArguments().build()).queue();
         } else {

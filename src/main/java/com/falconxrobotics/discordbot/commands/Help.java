@@ -85,7 +85,6 @@ public class Help extends Command {
                         + "automatically deletes single backslashs when the message is sent.", false)
                 .addField("Bot prefix", MarkdownUtil.monospace(BotConfiguration.getBotPrefix()), false);
         if (allCommandGroupPrefixes.length > 0) {
-            System.out.println(String.join("`` ", allCommandGroupPrefixes));
             builder.addField("All command group prefixes", "``"+String.join("`` ``", allCommandGroupPrefixes)+"``", false);
         } else {
             builder.addField("All command group prefixes", "No visible command groups.", false);
