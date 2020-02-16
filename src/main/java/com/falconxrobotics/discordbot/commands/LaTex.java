@@ -1,9 +1,11 @@
 package com.falconxrobotics.discordbot.commands;
 
+import java.io.IOException;
+import java.net.URL;
+
 import com.github.raybipse.components.Command;
 import com.github.raybipse.components.CommandGroup;
 
-import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 /**
@@ -67,9 +69,16 @@ public class LaTex extends Command {
             return;
         }
 
-        event.getChannel().sendMessage(new EmbedBuilder()
-                .setImage("http://latex.codecogs.com/png.latex?\\bg_white&space;\\large&space;" + input).build())
-                .queue();
+        try {
+            System.out.println("a");
+            event.getChannel().sendFile(
+                    new URL("http://latex.codecogs.com/png.latex?\\bg_white&space;\\large&space;" + input).openStream(),
+                    "latex.png").queue();
+        } catch (IOException e) {
+            e.printStackTrace();
+            event.getChannel().sendMessage(getEmbedSimpleError("IO Exception",
+                    "Unexpected IO Exception. Perhaps your LaTex expression is invalid.").build()).queue();
+        }
     }
 
 }
