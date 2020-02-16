@@ -5,6 +5,7 @@ import javax.security.auth.login.LoginException;
 import com.falconxrobotics.discordbot.commands.Dice;
 import com.falconxrobotics.discordbot.commands.Help;
 import com.falconxrobotics.discordbot.commands.LaTex;
+import com.falconxrobotics.discordbot.commands.Ping;
 import com.falconxrobotics.discordbot.commands.music.Music;
 import com.falconxrobotics.discordbot.commands.reddit.Reddit;
 import com.falconxrobotics.discordbot.commands.test.Test;
@@ -25,6 +26,7 @@ public class Bot {
     private static Help helpCommand;
     private static Dice dice;
     private static LaTex latex;
+    private static Ping ping;
 
     private Bot() {
     }
@@ -47,6 +49,7 @@ public class Bot {
             dice = new Dice();
             helpCommand = new Help();
             latex = new LaTex();
+            ping = new Ping();
 
             jda.getPresence().setActivity(Activity.listening(BotConfiguration.getBotPrefix() + helpCommand.getPrefix()));
         } catch (NullPointerException irte) {
@@ -64,7 +67,7 @@ public class Bot {
 
     public static Command[] getAllStandaloneCommands() {
         return new Command[] {
-            helpCommand, dice, latex
+            helpCommand, dice, latex, ping
         };
     }
 }
