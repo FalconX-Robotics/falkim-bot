@@ -8,6 +8,7 @@ import com.falconxrobotics.discordbot.commands.LaTex;
 import com.falconxrobotics.discordbot.commands.Ping;
 import com.falconxrobotics.discordbot.commands.Poll;
 import com.falconxrobotics.discordbot.commands.Pray;
+import com.falconxrobotics.discordbot.commands.corona.Coronavirus;
 import com.falconxrobotics.discordbot.commands.music.Music;
 import com.falconxrobotics.discordbot.commands.reddit.Reddit;
 import com.falconxrobotics.discordbot.commands.test.Test;
@@ -42,6 +43,7 @@ public class Bot {
             Test.getInstance();
             Reddit.getInstance();
             Music.getInstance();
+            Coronavirus.getInstance();
             new Dice();
             new LaTex();
             new Ping();
