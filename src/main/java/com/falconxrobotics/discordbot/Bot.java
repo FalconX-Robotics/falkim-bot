@@ -6,6 +6,8 @@ import com.falconxrobotics.discordbot.commands.Dice;
 import com.falconxrobotics.discordbot.commands.Help;
 import com.falconxrobotics.discordbot.commands.LaTex;
 import com.falconxrobotics.discordbot.commands.Ping;
+import com.falconxrobotics.discordbot.commands.Poll;
+import com.falconxrobotics.discordbot.commands.Pray;
 import com.falconxrobotics.discordbot.commands.music.Music;
 import com.falconxrobotics.discordbot.commands.reddit.Reddit;
 import com.falconxrobotics.discordbot.commands.test.Test;
@@ -43,6 +45,8 @@ public class Bot {
             new Dice();
             new LaTex();
             new Ping();
+            new Pray();
+            new Poll();
             Help helpCommand = new Help();
 
             jda.getPresence().setActivity(Activity.listening(BotConfiguration.getBotPrefix() + helpCommand.getPrefix()));

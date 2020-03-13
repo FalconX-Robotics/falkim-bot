@@ -101,10 +101,11 @@ public class Dice extends Command {
             return;
         }
         if (rollAmount < 0) {
-            event.getChannel().sendMessage("Roll amount cannot be negative").queue();
+            event.getChannel().sendMessage(getEmbedInvalidParameterError("Roll amount cannot be negative").build()).queue();
             return;
         } else if (diceFaces < 2) {
-            event.getChannel().sendMessage("Dice face must be at least 2");
+            event.getChannel().sendMessage(getEmbedInvalidParameterError("Dice face must be at least 2").build()).queue();
+            return;
         }
 
         rand.setSeed(System.currentTimeMillis());
