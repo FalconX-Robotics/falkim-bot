@@ -16,7 +16,7 @@ public class Echo extends Command {
         setDescription("Repeats the parameters the user gives.");
         addExamples("\"Hello World!\"");
         setSyntax("[...things to be repeated]*");
-        setParent(Test.getInstance());
+        setParent(() -> Test.getInstance());
     }
 
     @Override

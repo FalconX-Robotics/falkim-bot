@@ -31,9 +31,9 @@ public class Top extends Command {
         setDescription("Gets the top post from a subreddit.");
         addExamples("okbuddyretard");
         setSyntax("[subreddit name]");
-        setParent(Reddit.getInstance());
+        setParent(() -> Reddit.getInstance());
     }
-
+    
     @Override
     @SuppressWarnings("unchecked")
     public void onMessageReceived(MessageReceivedEvent event) {
