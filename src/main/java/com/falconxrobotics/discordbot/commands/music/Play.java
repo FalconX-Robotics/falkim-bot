@@ -1,7 +1,6 @@
 package com.falconxrobotics.discordbot.commands.music;
 
 import com.github.raybipse.components.Command;
-import com.github.raybipse.components.CommandGroup;
 
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
@@ -10,34 +9,12 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
  */
 public class Play extends Command {
 
-    @Override
-    public String getName() {
-        return "Play";
-    }
-
-    @Override
-    public String getPrefix() {
-        return "play";
-    }
-
-    @Override
-    public String getDescription() {
-        return "Plays a track.";
-    }
-
-    @Override
-    public String[] getExamples() {
-        return new String[] {"https://youtu.be/ALqOKq0M6ho"};
-    }
-
-    @Override
-    public String getSyntax() {
-        return "[YouTube link]";
-    }
-
-    @Override
-    public CommandGroup getParent() {
-        return Music.getInstance();
+    public Play() {
+        super("Play", "play");
+        setDescription("Plays a track.");
+        addExamples("https://youtu.be/ALqOKq0M6ho");
+        setSyntax("[YouTube link]");
+        setParent(Music.getInstance());
     }
 
     @Override

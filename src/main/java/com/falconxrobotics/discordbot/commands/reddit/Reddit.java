@@ -1,6 +1,5 @@
 package com.falconxrobotics.discordbot.commands.reddit;
 
-import com.github.raybipse.components.Command;
 import com.github.raybipse.components.CommandGroup;
 
 /**
@@ -14,6 +13,9 @@ public class Reddit extends CommandGroup {
     private Top top = new Top();
 
     private Reddit() {
+        super("Reddit", "reddit");
+        setDescription("Commands that involves interacting with Reddit.");
+        addChildren(help, top);
     }
 
     /**
@@ -24,25 +26,5 @@ public class Reddit extends CommandGroup {
             instance = new Reddit();
         }
         return instance;
-    }
-
-    @Override
-    public String getName() {
-        return "Reddit";
-    }
-
-    @Override
-    public String getDescription() {
-        return "Commands that involves interacting with Reddit.";
-    }
-
-    @Override
-    public Command[] getChildren() {
-        return new Command[] { help, top };
-    }
-
-    @Override
-    public String getPrefix() {
-        return "reddit";
     }
 }

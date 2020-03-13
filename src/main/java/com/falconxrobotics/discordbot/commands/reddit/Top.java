@@ -8,8 +8,6 @@ import java.net.http.HttpResponse;
 import java.util.Map;
 
 import com.github.raybipse.components.Command;
-import com.github.raybipse.components.CommandGroup;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -28,34 +26,12 @@ public class Top extends Command {
     private JSONParser parser = new JSONParser();
     private HttpClient client = HttpClient.newHttpClient();
 
-    @Override
-    public String getName() {
-        return "Top";
-    }
-
-    @Override
-    public String getDescription() {
-        return "Gets the top post from a subreddit.";
-    }
-
-    @Override
-    public String getPrefix() {
-        return "top";
-    }
-
-    @Override
-    public String[] getExamples() {
-        return new String[] { "okbuddyretard" };
-    }
-
-    @Override
-    public String getSyntax() {
-        return "[subreddit name]";
-    }
-
-    @Override
-    public CommandGroup getParent() {
-        return Reddit.getInstance();
+    protected Top() {
+        super("Top", "top");
+        setDescription("Gets the top post from a subreddit.");
+        addExamples("okbuddyretard");
+        setSyntax("[subreddit name]");
+        setParent(Reddit.getInstance());
     }
 
     @Override

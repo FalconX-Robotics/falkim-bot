@@ -1,8 +1,6 @@
 package com.falconxrobotics.discordbot.commands.test;
 
 import com.github.raybipse.components.Command;
-import com.github.raybipse.components.CommandGroup;
-
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
@@ -13,34 +11,12 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
  */
 public class Echo extends Command {
 
-    @Override
-    public String getName() {
-        return "Echo";
-    }
-
-    @Override
-    public String getDescription() {
-        return "Repeats the parameters the user gives.";
-    }
-
-    @Override
-    public String getPrefix() {
-        return "echo";
-    }
-
-    @Override
-    public String[] getExamples() {
-        return new String[] { "\"Hello World!\"" };
-    }
-
-    @Override
-    public String getSyntax() {
-        return "[...things to be repeated]*";
-    }
-
-    @Override
-    public CommandGroup getParent() {
-        return Test.getInstance();
+    protected Echo() {
+        super("Echo", "echo");
+        setDescription("Repeats the parameters the user gives.");
+        addExamples("\"Hello World!\"");
+        setSyntax("[...things to be repeated]*");
+        setParent(Test.getInstance());
     }
 
     @Override

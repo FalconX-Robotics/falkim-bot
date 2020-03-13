@@ -1,8 +1,6 @@
 package com.falconxrobotics.discordbot.commands.test;
 
 import com.github.raybipse.components.Command;
-import com.github.raybipse.components.CommandGroup;
-
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -14,34 +12,12 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
  */
 public class EchoTo extends Command {
 
-    @Override
-    public String getName() {
-        return "EchoTo";
-    }
-
-    @Override
-    public String getDescription() {
-        return "Repeats the parameters the user gives to a specific channel.";
-    }
-
-    @Override
-    public String getPrefix() {
-        return "echoto";
-    }
-
-    @Override
-    public String[] getExamples() {
-        return new String[] { "social \"Hello World!\"" };
-    }
-
-    @Override
-    public String getSyntax() {
-        return "[channel id or channel name] [...things to be repeated]*";
-    }
-
-    @Override
-    public CommandGroup getParent() {
-        return Test.getInstance();
+    protected EchoTo() {
+        super("EchoTo", "echoto");
+        setDescription("Repeats the parameters the user gives to a specific channel.");
+        addExamples("social \"Hello World!\"");
+        setSyntax("[channel id or channel name] [...things to be repeated]*");
+        setParent(Test.getInstance());
     }
 
     @Override

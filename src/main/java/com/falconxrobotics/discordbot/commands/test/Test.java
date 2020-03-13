@@ -1,6 +1,5 @@
 package com.falconxrobotics.discordbot.commands.test;
 
-import com.github.raybipse.components.Command;
 import com.github.raybipse.components.CommandGroup;
 
 /**
@@ -17,6 +16,9 @@ public class Test extends CommandGroup {
     private EchoTo echoto = new EchoTo();
 
     private Test() {
+        super("Test", "test");
+        setDescription("Commands are used for testing and debugging the application.");
+        addChildren(help, echo, echoto, cool);
     }
 
     /**
@@ -27,25 +29,5 @@ public class Test extends CommandGroup {
             instance = new Test();
         }
         return instance;
-    }
-
-    @Override
-    public String getName() {
-        return "Test";
-    }
-
-    @Override
-    public String getDescription() {
-        return "Commands are used for testing and debugging the application.";
-    }
-
-    @Override
-    public Command[] getChildren() {
-        return new Command[] { help, echo, echoto, cool };
-    }
-
-    @Override
-    public String getPrefix() {
-        return "test";
     }
 }

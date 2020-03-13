@@ -4,7 +4,6 @@ import java.time.OffsetDateTime;
 import java.util.Arrays;
 
 import com.github.raybipse.components.Command;
-import com.github.raybipse.components.CommandGroup;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -14,34 +13,10 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
  */
 public class Ping extends Command {
 
-    @Override
-    public String getName() {
-        return "Ping";
-    }
-
-    @Override
-    public String getPrefix() {
-        return "ping";
-    }
-
-    @Override
-    public String getDescription() {
-        return "Replies with pong";
-    }
-
-    @Override
-    public String[] getExamples() {
-        return new String[] { "" };
-    }
-
-    @Override
-    public String getSyntax() {
-        return "";
-    }
-
-    @Override
-    public CommandGroup getParent() {
-        return null;
+    public Ping() {
+        super("Ping", "ping");
+        setDescription("Replies with pong");
+        setSyntax("");
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.falconxrobotics.discordbot.commands.music;
 
-import com.github.raybipse.components.Command;
 import com.github.raybipse.components.CommandGroup;
 
 /**
@@ -13,7 +12,10 @@ public class Music extends CommandGroup {
     private Music.Help help = new Music.Help();
     private Play play = new Play();
 
-    private Music() {
+    public Music() {
+        super("Music", "m");
+        setDescription("Commands that is used to play music.");
+        addChildren(help, play);
     }
 
     /**
@@ -25,25 +27,4 @@ public class Music extends CommandGroup {
         }
         return instance;
     }
-
-    @Override
-    public String getName() {
-        return "Music";
-    }
-
-    @Override
-    public String getDescription() {
-        return "Commands that is used to play music.";
-    }
-
-    @Override
-    public Command[] getChildren() {
-        return new Command[] { help, play };
-    }
-
-    @Override
-    public String getPrefix() {
-        return "m";
-    }
-
 }

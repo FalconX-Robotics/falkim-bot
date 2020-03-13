@@ -28,7 +28,7 @@
         </dependency>
         <dependency>
             <groupId>com.github.raybipse</groupId>
-            <artifactId>java-command-bot</artifactId>
+            <artifactId>jda-command-bot</artifactId>
             <version>1.0.3</version>
         </dependency>
         <dependency>

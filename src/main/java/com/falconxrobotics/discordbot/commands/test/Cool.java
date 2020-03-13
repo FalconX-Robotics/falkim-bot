@@ -3,7 +3,6 @@ package com.falconxrobotics.discordbot.commands.test;
 import java.util.Set;
 
 import com.github.raybipse.components.Command;
-import com.github.raybipse.components.CommandGroup;
 import com.github.raybipse.core.BotConfiguration;
 
 import net.dv8tion.jda.api.EmbedBuilder;
@@ -18,7 +17,12 @@ import net.dv8tion.jda.api.exceptions.PermissionException;
  */
 public class Cool extends Command {
 
-    public Cool() {
+    protected Cool() {
+        super("Cool", "cool");
+        setDescription("Gets a message regarding with if whether you are cool or not.");
+        setSyntax("");
+        setParent(Test.getInstance());
+
         if (BotConfiguration.getJDA().getGuildById(384880977773854720L) != null) {
             requireRoles(Set.<Role>of(BotConfiguration.getJDA().getGuildById(384880977773854720L).getRoleById(481962341445926913L)));
             setOnRolePermissionFail((event) -> 
@@ -27,36 +31,6 @@ public class Cool extends Command {
                         .setColor(BotConfiguration.getErrorColor())
                         .build()).queue());
         }
-    }
-
-    @Override
-    public String getName() {
-        return "Cool";
-    }
-
-    @Override
-    public String getDescription() {
-        return "Gets a message regarding with if whether you are cool or not.";
-    }
-
-    @Override
-    public String getPrefix() {
-        return "cool";
-    }
-
-    @Override
-    public String[] getExamples() {
-        return null;
-    }
-
-    @Override
-    public String getSyntax() {
-        return "";
-    }
-
-    @Override
-    public CommandGroup getParent() {
-        return Test.getInstance();
     }
 
     @Override

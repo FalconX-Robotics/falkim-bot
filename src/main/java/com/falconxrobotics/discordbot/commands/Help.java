@@ -16,34 +16,11 @@ import net.dv8tion.jda.api.utils.MarkdownUtil;
  */
 public class Help extends Command {
 
-    @Override
-    public String getName() {
-        return "Help";
-    }
-
-    @Override
-    public String getPrefix() {
-        return "help";
-    }
-
-    @Override
-    public String getDescription() {
-        return "Returns details and general information about the bot.";
-    }
-
-    @Override
-    public String[] getExamples() {
-        return new String[] { "" };
-    }
-
-    @Override
-    public String getSyntax() {
-        return "";
-    }
-
-    @Override
-    public CommandGroup getParent() {
-        return null;
+    public Help() {
+        super("Help", "help");
+        setPrefix("help");
+        setDescription("Returns details and general information about the bot.");
+        setSyntax("");
     }
 
     @Override

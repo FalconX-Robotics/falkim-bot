@@ -3,8 +3,6 @@ package com.falconxrobotics.discordbot.commands;
 import java.util.Random;
 
 import com.github.raybipse.components.Command;
-import com.github.raybipse.components.CommandGroup;
-
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 /**
@@ -13,6 +11,13 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
  * @author RayBipse
  */
 public class Dice extends Command {
+
+    public Dice() {
+        super("Dice", "dice");
+        setDescription("Supplies a random value from [1, roll faces]. By default, it rolls from [1, 6].");
+        addExamples("", "2");
+        setSyntax("[optional: roll amount (whole number); max: " + maxRollAmonut + "] [optional: dice faces (natural number); max: " + maxRollFaces+"]");
+    }
 
     private Random rand = new Random(); 
     private int maxRollAmonut = 5;
@@ -56,36 +61,6 @@ public class Dice extends Command {
         "|     o      o     |\n" + 
         "\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\n"
     };
-
-    @Override
-    public String getName() {
-        return "Dice";
-    }
-
-    @Override
-    public String getPrefix() {
-        return "dice";
-    }
-
-    @Override
-    public String getDescription() {
-        return "Supplies a random value from [1, roll faces]. By default, it rolls from [1, 6].";
-    }
-
-    @Override
-    public String[] getExamples() {
-        return new String[] { "", "2" };
-    }
-
-    @Override
-    public String getSyntax() {
-        return "[optional: roll amount (whole number); max: " + maxRollAmonut + "] [optional: dice faces (natural number); max: " + maxRollFaces+"]";
-    }
-
-    @Override
-    public CommandGroup getParent() {
-        return null;
-    }
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
