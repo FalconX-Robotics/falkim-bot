@@ -9,8 +9,6 @@ import com.falconxrobotics.discordbot.commands.Ping;
 import com.falconxrobotics.discordbot.commands.music.Music;
 import com.falconxrobotics.discordbot.commands.reddit.Reddit;
 import com.falconxrobotics.discordbot.commands.test.Test;
-import com.github.raybipse.components.Command;
-import com.github.raybipse.components.CommandGroup;
 import com.github.raybipse.core.BotConfiguration;
 
 import net.dv8tion.jda.api.JDA;
@@ -23,10 +21,6 @@ import net.dv8tion.jda.api.entities.Activity;
 public class Bot {
 
     private static JDA jda;
-    private static Help helpCommand;
-    private static Dice dice;
-    private static LaTex latex;
-    private static Ping ping;
 
     private Bot() {
     }
@@ -46,10 +40,10 @@ public class Bot {
             Test.getInstance();
             Reddit.getInstance();
             Music.getInstance();
-            dice = new Dice();
-            helpCommand = new Help();
-            latex = new LaTex();
-            ping = new Ping();
+            new Dice();
+            new LaTex();
+            new Ping();
+            Help helpCommand = new Help();
 
             jda.getPresence().setActivity(Activity.listening(BotConfiguration.getBotPrefix() + helpCommand.getPrefix()));
         } catch (NullPointerException irte) {

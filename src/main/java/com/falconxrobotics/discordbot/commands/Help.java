@@ -1,6 +1,5 @@
 package com.falconxrobotics.discordbot.commands;
 
-import com.falconxrobotics.discordbot.Bot;
 import com.github.raybipse.components.Command;
 import com.github.raybipse.components.CommandGroup;
 import com.github.raybipse.core.BotConfiguration;
