@@ -4,9 +4,6 @@ import com.github.raybipse.components.Command;
 
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
-/**
- * Play
- */
 public class Play extends Command {
 
     public Play() {

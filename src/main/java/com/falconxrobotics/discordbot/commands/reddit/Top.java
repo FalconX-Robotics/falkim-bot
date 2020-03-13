@@ -35,7 +35,7 @@ public class Top extends Command {
     private JSONParser parser = new JSONParser();
     private HttpClient client = HttpClient.newHttpClient();
     private Timer timer;
-    private String defaultTimerSubreddit = "okbuddyretard";
+    private String defaultTimerSubreddit = "PeopleFuckingDying";
     private int targetTimerHour = 4;
     private int targetTimerMinute = 20;
 
@@ -64,7 +64,7 @@ public class Top extends Command {
                         .queue(m -> sendRequest(channel, defaultTimerSubreddit));
                 }
             }
-        }, 0, 45 * 1000);
+        }, 0, 60 * 1000);
     }
 
     @SuppressWarnings("unchecked")

@@ -9,13 +9,12 @@ import com.github.raybipse.components.CommandGroup;
  */
 public class Reddit extends CommandGroup {
     private static Reddit instance;
-    private Reddit.Help help = new Reddit.Help();
     private Top top = new Top();
 
     private Reddit() {
         super("Reddit", "reddit");
         setDescription("Commands that involves interacting with Reddit.");
-        addChildren(help, top);
+        addChildren(top, new Help());
     }
 
     /**

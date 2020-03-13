@@ -9,13 +9,12 @@ import com.github.raybipse.components.CommandGroup;
  */
 public class Music extends CommandGroup {
     private static Music instance;
-    private Music.Help help = new Music.Help();
     private Play play = new Play();
 
     public Music() {
         super("Music", "m");
         setDescription("Commands that is used to play music.");
-        addChildren(help, play);
+        addChildren(play, new Help());
     }
 
     /**

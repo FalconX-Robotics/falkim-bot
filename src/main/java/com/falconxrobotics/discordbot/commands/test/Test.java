@@ -10,7 +10,6 @@ import com.github.raybipse.components.CommandGroup;
  */
 public class Test extends CommandGroup {
     private static Test instance;
-    private Test.Help help = new Test.Help();
     private Echo echo = new Echo();
     private Cool cool = new Cool();
     private EchoTo echoto = new EchoTo();
@@ -18,7 +17,7 @@ public class Test extends CommandGroup {
     private Test() {
         super("Test", "test");
         setDescription("Commands are used for testing and debugging the application.");
-        addChildren(help, echo, echoto, cool);
+        addChildren(echo, echoto, cool, new Help());
     }
 
     /**
