@@ -31,17 +31,21 @@ public class Help extends Command {
         if (!getInputValidity(messageContent))
             return;
 
-        CommandGroup[] allCommandGroups = Bot.getAllCommandGroups();
-        String[] allCommandGroupPrefixes = new String[allCommandGroups.length];
-        for (int i = 0; i < allCommandGroups.length; i++) {
-            allCommandGroupPrefixes[i] = allCommandGroups[i].getPrefix();
-        }
+        // CommandGroup[] allCommandGroups = Bot.getAllCommandGroups();
+        // String[] allCommandGroupPrefixes = new String[allCommandGroups.length];
+        // for (int i = 0; i < allCommandGroups.length; i++) {
+        //     allCommandGroupPrefixes[i] = allCommandGroups[i].getPrefix();
+        // }
 
-        Command[] allStandaloneCommands = Bot.getAllStandaloneCommands();
-        String[] allStandaloneCommandPrefixes = new String[allStandaloneCommands.length];
-        for (int i = 0; i < allStandaloneCommands.length; i++) {
-            allStandaloneCommandPrefixes[i] = allStandaloneCommands[i].getPrefix();
-        }
+        String[] allCommandGroupPrefixes = BotConfiguration.getAllCommandGroups().stream().map(CommandGroup::getPrefix).toArray(String[]::new);
+
+        // Command[] allStandaloneCommands = BotConfiguration.getAllStandaloneCommands();
+        // String[] allStandaloneCommandPrefixes = new String[allStandaloneCommands.length];
+        // for (int i = 0; i < allStandaloneCommands.length; i++) {
+        //     allStandaloneCommandPrefixes[i] = allStandaloneCommands[i].getPrefix();
+        // }
+
+        String[] allStandaloneCommandPrefixes = BotConfiguration.getAllStandaloneCommands().stream().map(Command::getPrefix).toArray(String[]::new);
 
         EmbedBuilder builder = new EmbedBuilder()
                 .setTitle("Help")

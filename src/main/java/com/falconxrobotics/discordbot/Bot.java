@@ -59,15 +59,15 @@ public class Bot {
         }
     }
 
-    public static CommandGroup[] getAllCommandGroups() {
-        return new CommandGroup[] {
-            Test.getInstance(), Reddit.getInstance()
-        };
-    }
+    // public static CommandGroup[] getAllCommandGroups() {
+    //     return new CommandGroup[] {
+    //         Test.getInstance(), Reddit.getInstance()
+    //     };
+    // }
 
-    public static Command[] getAllStandaloneCommands() {
-        return new Command[] {
-            helpCommand, dice, latex, ping
-        };
-    }
+    // public static Command[] getAllStandaloneCommands() {
+    //     return new Command[] {
+    //         helpCommand, dice, latex, ping
+    //     };
+    // }
 }
