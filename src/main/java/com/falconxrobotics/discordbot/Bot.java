@@ -1,5 +1,7 @@
 package com.falconxrobotics.discordbot;
 
+import java.util.List;
+
 import javax.security.auth.login.LoginException;
 
 import com.falconxrobotics.discordbot.commands.Dice;
@@ -14,11 +16,13 @@ import com.falconxrobotics.discordbot.commands.eval.Evaluate;
 import com.falconxrobotics.discordbot.commands.music.Music;
 import com.falconxrobotics.discordbot.commands.reddit.Reddit;
 import com.falconxrobotics.discordbot.commands.test.Test;
+import com.github.raybipse.components.SimpleCommand;
 import com.github.raybipse.core.BotConfiguration;
 
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 /**
  * The beginning point of the application.
@@ -53,9 +57,18 @@ public class Bot {
             new Pray();
             new Poll();
             new Last();
+            SimpleCommand source = new SimpleCommand("Source", "source", "Gets the source of the bot's code.",
+                    List.of(""), "", null);
+
+            source.withMessageReceivedEvent(
+                    (evt) -> evt.getChannel().sendMessage("https://github.com/FalconX-Robotics/falkim-bot").queue(),
+                    List.of((event) -> !event.getAuthor().isBot()
+                            && source.getInputValidity(event.getMessage().getContentDisplay())));
+            
             Help helpCommand = new Help();
 
-            jda.getPresence().setActivity(Activity.listening(BotConfiguration.getBotPrefix() + helpCommand.getPrefix()));
+            jda.getPresence()
+                    .setActivity(Activity.listening(BotConfiguration.getBotPrefix() + helpCommand.getPrefix()));
         } catch (NullPointerException irte) {
             jda.shutdown();
             irte.printStackTrace();
@@ -64,14 +77,14 @@ public class Bot {
     }
 
     // public static CommandGroup[] getAllCommandGroups() {
-    //     return new CommandGroup[] {
-    //         Test.getInstance(), Reddit.getInstance()
-    //     };
+    // return new CommandGroup[] {
+    // Test.getInstance(), Reddit.getInstance()
+    // };
     // }
 
     // public static Command[] getAllStandaloneCommands() {
-    //     return new Command[] {
-    //         helpCommand, dice, latex, ping
-    //     };
+    // return new Command[] {
+    // helpCommand, dice, latex, ping
+    // };
     // }
 }
