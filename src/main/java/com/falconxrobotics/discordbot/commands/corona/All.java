@@ -37,7 +37,7 @@ public class All extends Command implements Invocable<Void, EmbedBuilder> {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             JSONObject json = (JSONObject) parser.parse(response.body());
             EmbedBuilder builder = new EmbedBuilder()
-                .setTitle("COVID-19 In the Globe");
+                .setTitle("COVID-19 in the Globe");
 
             System.out.println("awd");
             builder.addField("Cases", json.get("cases").toString(), false);
