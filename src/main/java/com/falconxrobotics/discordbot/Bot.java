@@ -22,7 +22,6 @@ import com.github.raybipse.core.BotConfiguration;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
-import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 /**
  * The beginning point of the application.
