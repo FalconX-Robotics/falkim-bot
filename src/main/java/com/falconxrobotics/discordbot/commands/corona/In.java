@@ -55,7 +55,7 @@ public class In extends Command implements Invocable<String, EmbedBuilder> {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             JSONArray json = (JSONArray) parser.parse(response.body());
 
-            Optional<JSONObject> optional = json.stream().filter((e) -> ((JSONObject) e).get("country").equals(country))
+            Optional<JSONObject> optional = json.stream().filter((e) -> ((String) ((JSONObject) e).get("country")).equalsIgnoreCase(country))
                     .findFirst();
             
             if (!optional.isPresent()) {
