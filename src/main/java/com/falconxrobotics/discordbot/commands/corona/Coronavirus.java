@@ -42,8 +42,8 @@ public class Coronavirus extends CommandGroup {
                     TextChannel channel = BotConfiguration.getJDA().getTextChannelById(533820195949510666L);
                     channel.sendMessage("COVID-19 update:")
                         .queue(m -> {
-                            top.invoke("All");
-                            top.invoke("USA");
+                            channel.sendMessage(all.invoke(null).build()).queue();;
+                            channel.sendMessage(top.invoke("USA").build()).queue();
                         });
                 }
             }
