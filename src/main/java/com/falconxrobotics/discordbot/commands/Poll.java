@@ -15,7 +15,7 @@ public class Poll extends Command {
     public Poll() {
         super("Poll", "poll");
         setDescription("Makes a poll.");
-        setSyntax("[question], [...options]");
+        setSyntax("[question] [...options]");
         addExamples("What's better?", "Dogs", "Cats");
     }
 

@@ -24,7 +24,7 @@ public class In extends Command implements Invocable<String, EmbedBuilder> {
     private HttpClient client = HttpClient.newHttpClient();
     private URI fetchURI = URI.create("https://corona.lmao.ninja/countries");
 
-    public In() {
+    protected In() {
         super("In", "in");
         setDescription("Gives status of COVID-19 in a specified country.");
         setSyntax("[country]");

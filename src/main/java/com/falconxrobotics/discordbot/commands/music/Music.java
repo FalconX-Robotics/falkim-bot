@@ -11,7 +11,7 @@ public class Music extends CommandGroup {
     private static Music instance;
     private Play play = new Play();
 
-    public Music() {
+    protected Music() {
         super("Music", "m");
         setDescription("Commands that is used to play music.");
         addChildren(play, new Help());

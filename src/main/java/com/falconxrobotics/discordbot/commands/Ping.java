@@ -15,8 +15,9 @@ public class Ping extends Command {
 
     public Ping() {
         super("Ping", "ping");
-        setDescription("Replies with pong");
-        setSyntax("");
+        setDescription("Replies with pong.");
+        addExamples("", "hi");
+        setSyntax("[optional: arguments]");
     }
 
     @Override

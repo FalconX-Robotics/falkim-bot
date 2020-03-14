@@ -22,7 +22,7 @@ public class All extends Command implements Invocable<Void, EmbedBuilder> {
     private HttpClient client = HttpClient.newHttpClient();
     private URI fetchURI = URI.create("https://corona.lmao.ninja/all");
 
-    public All() {
+    protected All() {
         super("All", "all");
         setDescription("Gives status of COVID-19 in the world.");
         setSyntax("");

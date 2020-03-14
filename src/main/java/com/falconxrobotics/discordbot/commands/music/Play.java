@@ -6,7 +6,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 public class Play extends Command {
 
-    public Play() {
+    protected Play() {
         super("Play", "play");
         setDescription("Plays a track.");
         addExamples("https://youtu.be/ALqOKq0M6ho");
