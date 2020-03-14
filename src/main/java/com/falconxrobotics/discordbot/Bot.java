@@ -5,10 +5,12 @@ import javax.security.auth.login.LoginException;
 import com.falconxrobotics.discordbot.commands.Dice;
 import com.falconxrobotics.discordbot.commands.Help;
 import com.falconxrobotics.discordbot.commands.LaTex;
+import com.falconxrobotics.discordbot.commands.Last;
 import com.falconxrobotics.discordbot.commands.Ping;
 import com.falconxrobotics.discordbot.commands.Poll;
 import com.falconxrobotics.discordbot.commands.Pray;
 import com.falconxrobotics.discordbot.commands.corona.Coronavirus;
+import com.falconxrobotics.discordbot.commands.eval.Evaluate;
 import com.falconxrobotics.discordbot.commands.music.Music;
 import com.falconxrobotics.discordbot.commands.reddit.Reddit;
 import com.falconxrobotics.discordbot.commands.test.Test;
@@ -44,11 +46,13 @@ public class Bot {
             Reddit.getInstance();
             Music.getInstance();
             Coronavirus.getInstance();
+            Evaluate.getInstance();
             new Dice();
             new LaTex();
             new Ping();
             new Pray();
             new Poll();
+            new Last();
             Help helpCommand = new Help();
 
             jda.getPresence().setActivity(Activity.listening(BotConfiguration.getBotPrefix() + helpCommand.getPrefix()));
