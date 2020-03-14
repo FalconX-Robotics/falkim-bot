@@ -38,9 +38,9 @@ public class Coronavirus extends CommandGroup {
                 cal.setTimeZone(TimeZone.getTimeZone("PST"));
                 int hour = cal.get(Calendar.HOUR_OF_DAY);
                 int minutes = cal.get(Calendar.MINUTE);
-                if ((hour == targetTimerHour || hour == targetTimerHour + 12) && minutes == targetTimerMinute) {
+                if ((hour == targetTimerHour) && minutes == targetTimerMinute) {
                     TextChannel channel = BotConfiguration.getJDA().getTextChannelById(533820195949510666L);
-                    channel.sendMessage("The clock strikes twelve.")
+                    channel.sendMessage("COVID-19 update:")
                         .queue(m -> {
                             top.invoke("All");
                             top.invoke("USA");
