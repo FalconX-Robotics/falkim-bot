@@ -39,7 +39,6 @@ public class All extends Command implements Invocable<Void, EmbedBuilder> {
             EmbedBuilder builder = new EmbedBuilder()
                 .setTitle("COVID-19 in the Globe");
 
-            System.out.println("awd");
             builder.addField("Cases", json.get("cases").toString(), false);
             builder.addField("Deaths", json.get("deaths").toString(), false);
             builder.addField("Recovered", json.get("recovered").toString(), false);

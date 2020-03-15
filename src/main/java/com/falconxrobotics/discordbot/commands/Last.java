@@ -33,11 +33,6 @@ public class Last extends Command {
         if (lastMessageEvents.get(channelId).size() > 50) {
             lastMessageEvents.get(event.getChannel().getIdLong()).remove(lastMessageEvents.size() - 1);
         }
-
-        for (MessageReceivedEvent e : pastEvents) {
-            System.out.println(e.getMessage().getContentDisplay());
-        }
-        
         String messageContent = event.getMessage().getContentDisplay();
         if (event.getAuthor().isBot())
             return;
