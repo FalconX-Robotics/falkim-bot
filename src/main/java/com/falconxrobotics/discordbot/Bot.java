@@ -6,6 +6,7 @@ import javax.security.auth.login.LoginException;
 
 import com.falconxrobotics.discordbot.commands.Dice;
 import com.falconxrobotics.discordbot.commands.Help;
+import com.falconxrobotics.discordbot.commands.Javadoc;
 import com.falconxrobotics.discordbot.commands.LaTex;
 import com.falconxrobotics.discordbot.commands.Last;
 import com.falconxrobotics.discordbot.commands.Ping;
@@ -56,6 +57,7 @@ public class Bot {
             new Pray();
             new Poll();
             new Last();
+            new Javadoc();
             SimpleCommand source = new SimpleCommand("Source", "source", "Gets the source of the bot's code.",
                     List.of(""), "", null);
 
