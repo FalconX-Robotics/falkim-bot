@@ -74,7 +74,7 @@ public class TrackScheduler extends AudioEventAdapter {
         // LOAD_FAILED)
         if (endReason.mayStartNext) {
             nextTrack();
-        } else {
+        } else if (queue.isEmpty()) {
             Music.getInstance().stop.invoke(guildMusicManager.guild);
         }
     }
