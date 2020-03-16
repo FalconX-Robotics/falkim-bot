@@ -65,7 +65,15 @@ public class Bot {
                     (evt) -> evt.getChannel().sendMessage("https://github.com/FalconX-Robotics/falkim-bot").queue(),
                     List.of((event) -> !event.getAuthor().isBot()
                             && source.getInputValidity(event.getMessage().getContentDisplay())));
-            
+
+            SimpleCommand dab = new SimpleCommand("Dab", "dab", "Dabs.",
+                    List.of(""), "", null);
+
+            dab.withMessageReceivedEvent(
+                    (evt) -> evt.getChannel().sendMessage("<:SteveDabbing:598269423035482113>").queue(),
+                    List.of((event) -> !event.getAuthor().isBot()
+                            && dab.getInputValidity(event.getMessage().getContentDisplay())));
+
             Help helpCommand = new Help();
 
             jda.getPresence()
