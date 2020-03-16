@@ -11,7 +11,7 @@ public class Play extends Command {
         setDescription("Plays a track.");
         addExamples("https://youtu.be/ALqOKq0M6ho");
         setSyntax("[YouTube link]");
-        setParent(() -> Music.getInstance());
+        setParent(Music::getInstance);
     }
 
     @Override

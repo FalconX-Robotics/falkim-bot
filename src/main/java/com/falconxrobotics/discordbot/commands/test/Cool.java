@@ -21,7 +21,7 @@ public class Cool extends Command {
         super("Cool", "cool");
         setDescription("Gets a message regarding with if whether you are cool or not.");
         setSyntax("");
-        setParent(() -> Test.getInstance());
+        setParent(Test::getInstance);
 
         if (BotConfiguration.getJDA().getGuildById(384880977773854720L) != null) {
             requireRoles(Set.<Role>of(BotConfiguration.getJDA().getGuildById(384880977773854720L).getRoleById(481962341445926913L)));

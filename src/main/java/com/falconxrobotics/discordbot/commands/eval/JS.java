@@ -19,7 +19,7 @@ public class JS extends Command implements Invocable<String, EmbedBuilder> {
         super("JavaScript", "js");
         setDescription("Evaulates JavaScript code on the Nashorn engine.");
         setSyntax("[code]");
-        setParent(() -> Evaluate.getInstance());
+        setParent(Evaluate::getInstance);
         addExamples("1 + 1", "[1,2,3].reduce(function(a, b) { return a+b })");
     }
 

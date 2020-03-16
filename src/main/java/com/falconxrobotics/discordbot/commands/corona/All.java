@@ -27,7 +27,7 @@ public class All extends Command implements Invocable<Void, EmbedBuilder> {
         setDescription("Gives status of COVID-19 in the world.");
         setSyntax("");
         addExamples("");
-        setParent(() -> Coronavirus.getInstance());
+        setParent(Coronavirus::getInstance);
     }
 
     @Override

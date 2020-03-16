@@ -28,7 +28,7 @@ public class In extends Command implements Invocable<String, EmbedBuilder> {
         super("In", "in");
         setDescription("Gives status of COVID-19 in a specified country.");
         setSyntax("[country]");
-        setParent(() -> Coronavirus.getInstance());
+        setParent(Coronavirus::getInstance);
         addExamples("USA", "China");
     }
 

@@ -17,7 +17,7 @@ public class EchoTo extends Command {
         setDescription("Repeats the parameters the user gives to a specific channel.");
         addExamples("social \"Hello World!\"");
         setSyntax("[channel id or channel name] [...things to be repeated]*");
-        setParent(() -> Test.getInstance());
+        setParent(Test::getInstance);
     }
 
     @Override
