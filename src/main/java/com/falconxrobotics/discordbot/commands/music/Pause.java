@@ -8,7 +8,7 @@ public class Pause extends Command {
 
     protected Pause() {
         super("Pause", "pause");
-        setDescription("Pauses the currently playing music.");
+        setDescription("Toggles pause on the currently playing music.");
         addExamples("");
         setSyntax("");
         setParent(Music::getInstance);

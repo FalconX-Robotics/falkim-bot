@@ -20,12 +20,13 @@ import java.util.concurrent.LinkedBlockingQueue;
  * @author RayBipse
  */
 public class TrackScheduler extends AudioEventAdapter {
-    private final AudioPlayer player;
+    protected final AudioPlayer player;
     public final BlockingQueue<AudioTrack> queue;
-    private final GuildMusicManager guildMusicManager;
+    protected final GuildMusicManager guildMusicManager;
 
     public AudioTrack currentTrack;
     private boolean isLooped;
+    // private boolean isPausedDB = false;
 
     /**
      * @param player The audio player this scheduler uses
@@ -112,13 +113,13 @@ public class TrackScheduler extends AudioEventAdapter {
         }
     }
 
-    public void pause() {
-        player.setPaused(true);
-    }
+    // public void pause() {
+    //     player.setPaused(true);
+    // }
 
-    public void resume() {
-        player.setPaused(false);
-    }
+    // public void resume() {
+    //     player.setPaused(false);
+    // }
 
     public void togglePaused() {
         player.setPaused(!player.isPaused());
@@ -128,6 +129,8 @@ public class TrackScheduler extends AudioEventAdapter {
      * @param player Audio player
      */
     public void onPlayerPause(AudioPlayer player) {
+        // if (isPausedDB == false) isPausedDB = true;
+        // else return;
         guildMusicManager.channel.sendMessage(
             new EmbedBuilder()
                 .setTitle("Paused")
@@ -140,6 +143,8 @@ public class TrackScheduler extends AudioEventAdapter {
      * @param player Audio player
      */
     public void onPlayerResume(AudioPlayer player) {
+        // if (isPausedDB == true) isPausedDB = false;
+        // else return;
         guildMusicManager.channel.sendMessage(
             new EmbedBuilder()
                 .setTitle("Resumed")

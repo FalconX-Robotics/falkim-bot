@@ -53,6 +53,9 @@ public class LoadHandler implements AudioLoadResultHandler {
             .setDescription("The song was not queued")
             .setColor(BotConfiguration.getErrorColor());
         messageChannel.sendMessage(builder.build()).queue();
+        if (scheduler.queue.isEmpty() && scheduler.player.getPlayingTrack() == null) {
+            scheduler.guildMusicManager.guild.getAudioManager().closeAudioConnection();
+        }
     }
 
     @Override

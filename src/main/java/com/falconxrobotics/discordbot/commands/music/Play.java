@@ -57,7 +57,6 @@ public class Play extends Command {
             }
 
             Music.getInstance().playerManager.loadItemOrdered(guildMusicManager.player, arguments[0], new LoadHandler(guildMusicManager.scheduler, event.getChannel()));
-            guildMusicManager.player.addListener(guildMusicManager.scheduler);
             manager.setSendingHandler(guildMusicManager.getSendHandler());
             manager.openAudioConnection(channel);
         }

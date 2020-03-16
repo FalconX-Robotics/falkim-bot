@@ -34,7 +34,8 @@ public class Now extends Command {
             builder.setTitle("No Tracks Playing").setColor(Color.ORANGE);
         } else {
             builder = Music.getInstance().getEmbedTrackInfo(track.getInfo())
-                .setColor(BotConfiguration.getPromptColor());
+                .setColor(BotConfiguration.getPromptColor())
+                .addField("Position", Music.getInstance().inReadable(guildMusicManager.player.getPlayingTrack().getPosition()), false);
             
             String appen = "";
             if (guildMusicManager.scheduler.getLooped()) {

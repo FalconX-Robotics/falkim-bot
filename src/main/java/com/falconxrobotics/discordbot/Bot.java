@@ -12,6 +12,7 @@ import com.falconxrobotics.discordbot.commands.Last;
 import com.falconxrobotics.discordbot.commands.Ping;
 import com.falconxrobotics.discordbot.commands.Poll;
 import com.falconxrobotics.discordbot.commands.Pray;
+import com.falconxrobotics.discordbot.commands.UserInfo;
 import com.falconxrobotics.discordbot.commands.corona.Coronavirus;
 import com.falconxrobotics.discordbot.commands.eval.Evaluate;
 import com.falconxrobotics.discordbot.commands.music.Music;
@@ -58,6 +59,7 @@ public class Bot {
             new Poll();
             new Last();
             new Javadoc();
+            new UserInfo();
             SimpleCommand source = new SimpleCommand("Source", "source", "Gets the source of the bot's code.",
                     List.of(""), "", null);
 

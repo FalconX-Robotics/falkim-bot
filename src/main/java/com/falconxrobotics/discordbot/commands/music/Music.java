@@ -26,6 +26,8 @@ public class Music extends CommandGroup {
     private Now now = new Now();
     private Queued queued = new Queued();
     private Loop loop = new Loop();
+    private Pause pause = new Pause();
+    private Forward forward = new Forward();
 
     public final AudioPlayerManager playerManager;
     protected final Map<Long, GuildMusicManager> musicManagers = new HashMap<Long, GuildMusicManager>();
@@ -33,7 +35,7 @@ public class Music extends CommandGroup {
     protected Music() {
         super("Music", "m");
         setDescription("Commands that is used to play music.");
-        addChildren(play, stop, skip, now, queued, loop, new Help());
+        addChildren(play, stop, skip, now, queued, loop, pause, forward, new Help());
 
         playerManager = new DefaultAudioPlayerManager();
         AudioSourceManagers.registerRemoteSources(playerManager);
@@ -68,7 +70,7 @@ public class Music extends CommandGroup {
             .setTitle("Now Playing")
             .addField("Title", (info.uri.equals("https://www.youtube.com/watch?v=dQw4w9WgXcQ")) ? "furry_p0rn" : info.title, false)
             .addField("Author", (info.uri.equals("https://www.youtube.com/watch?v=dQw4w9WgXcQ")) ? "hot furry dude" : info.author, false)
-            .addField("Duration", Music.getInstance().inReadable(info.length), false)
+            .addField("Duration", inReadable(info.length), false)
             .addField("URI", info.uri, false)
             .addField("Is Stream", String.valueOf(info.isStream), false);
     }

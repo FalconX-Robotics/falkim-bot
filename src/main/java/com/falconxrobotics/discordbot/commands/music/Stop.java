@@ -34,7 +34,6 @@ public class Stop extends Command implements Invocable<Guild, Void> {
     public Void invoke(Guild guild) {
         Music.getInstance().getGuildMusicManager(guild).scheduler.clearQueue();
         guild.getAudioManager().closeAudioConnection();
-
         Music.getInstance().getGuildMusicManager(guild).channel.sendMessage(
             new EmbedBuilder()
                 .setTitle("Stopped Playing")
