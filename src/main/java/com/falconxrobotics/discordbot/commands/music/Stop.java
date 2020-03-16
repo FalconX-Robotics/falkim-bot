@@ -1,8 +1,11 @@
 package com.falconxrobotics.discordbot.commands.music;
 
+import java.awt.Color;
+
 import com.github.raybipse.components.Command;
 import com.github.raybipse.components.Invocable;
 
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
@@ -30,6 +33,14 @@ public class Stop extends Command implements Invocable<Guild, Void> {
     @Override
     public Void invoke(Guild guild) {
         guild.getAudioManager().closeAudioConnection();
+
+        Music.getInstance().getGuildMusicManager(guild).channel.sendMessage(
+            new EmbedBuilder()
+                .setTitle("Stopped Playing")
+                .setColor(Color.YELLOW)
+                .build()
+        ).queue();
+
         return null;
     }
 }

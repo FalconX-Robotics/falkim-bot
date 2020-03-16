@@ -7,7 +7,9 @@ import com.github.raybipse.components.CommandGroup;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers;
+import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
 
 
@@ -21,6 +23,8 @@ public class Music extends CommandGroup {
     private Play play = new Play();
     protected Stop stop = new Stop();
     private Skip skip = new Skip();
+    private Now now = new Now();
+    private Queued queued = new Queued();
 
     public final AudioPlayerManager playerManager;
     protected final Map<Long, GuildMusicManager> musicManagers = new HashMap<Long, GuildMusicManager>();
@@ -28,7 +32,7 @@ public class Music extends CommandGroup {
     protected Music() {
         super("Music", "m");
         setDescription("Commands that is used to play music.");
-        addChildren(play, stop, skip, new Help());
+        addChildren(play, stop, skip, now, queued, new Help());
 
         playerManager = new DefaultAudioPlayerManager();
         AudioSourceManagers.registerRemoteSources(playerManager);
@@ -56,6 +60,16 @@ public class Music extends CommandGroup {
         guild.getAudioManager().setSendingHandler(musicManager.getSendHandler());
 
         return musicManager;
+    }
+
+    public EmbedBuilder getEmbedTrackInfo(AudioTrackInfo info) {
+        return new EmbedBuilder()
+            .setTitle("Now Playing")
+            .addField("Title", info.title, false)
+            .addField("Author", info.author, false)
+            .addField("Duration", Music.getInstance().inReadable(info.length), false)
+            .addField("URI", info.uri, false)
+            .addField("Is Stream", String.valueOf(info.isStream), false);
     }
 
     public String inReadable(long millis) {

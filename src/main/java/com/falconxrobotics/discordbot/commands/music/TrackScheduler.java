@@ -20,7 +20,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  */
 public class TrackScheduler extends AudioEventAdapter {
     private final AudioPlayer player;
-    private final BlockingQueue<AudioTrack> queue;
+    public final BlockingQueue<AudioTrack> queue;
     private final GuildMusicManager guildMusicManager;
 
     /**
@@ -58,13 +58,19 @@ public class TrackScheduler extends AudioEventAdapter {
         // player.
         AudioTrack track = queue.poll();
         player.startTrack(track, false);
-        EmbedBuilder builder = new EmbedBuilder()
-            .setTitle("Now Playing")
-            .addField("Title", track.getInfo().title, false)
-            .addField("Author", track.getInfo().author, false)
-            .addField("Duration", Music.getInstance().inReadable(track.getInfo().length), false)
-            .addField("URI", track.getInfo().uri, false)
-            .setColor(Color.ORANGE);
+
+        if (track == null) {
+            Music.getInstance().stop.invoke(guildMusicManager.guild);
+            EmbedBuilder builder = new EmbedBuilder()
+                .setTitle("Queue ended")
+                .setDescription("All songs have finished playing.")
+                .setColor(Color.YELLOW);
+            guildMusicManager.channel.sendMessage(builder.build()).queue();
+        }
+
+        EmbedBuilder builder = Music.getInstance().getEmbedTrackInfo(track.getInfo())
+            .setColor(Color.ORANGE)
+            .setFooter(queue.size() + 1 + " more queued audio tracks.");
         guildMusicManager.channel.sendMessage(builder.build()).queue();
     }
 
@@ -74,8 +80,6 @@ public class TrackScheduler extends AudioEventAdapter {
         // LOAD_FAILED)
         if (endReason.mayStartNext) {
             nextTrack();
-        } else if (queue.isEmpty()) {
-            Music.getInstance().stop.invoke(guildMusicManager.guild);
         }
     }
 }
