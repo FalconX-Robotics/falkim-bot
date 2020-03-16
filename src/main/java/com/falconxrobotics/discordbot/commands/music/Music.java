@@ -25,6 +25,7 @@ public class Music extends CommandGroup {
     private Skip skip = new Skip();
     private Now now = new Now();
     private Queued queued = new Queued();
+    private Loop loop = new Loop();
 
     public final AudioPlayerManager playerManager;
     protected final Map<Long, GuildMusicManager> musicManagers = new HashMap<Long, GuildMusicManager>();
@@ -32,7 +33,7 @@ public class Music extends CommandGroup {
     protected Music() {
         super("Music", "m");
         setDescription("Commands that is used to play music.");
-        addChildren(play, stop, skip, now, queued, new Help());
+        addChildren(play, stop, skip, now, queued, loop, new Help());
 
         playerManager = new DefaultAudioPlayerManager();
         AudioSourceManagers.registerRemoteSources(playerManager);

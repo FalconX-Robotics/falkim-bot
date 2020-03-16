@@ -34,8 +34,17 @@ public class Now extends Command {
             builder.setTitle("No Tracks Playing").setColor(Color.ORANGE);
         } else {
             builder = Music.getInstance().getEmbedTrackInfo(track.getInfo())
-                .setColor(BotConfiguration.getSuccessColor())
-                .setFooter(guildMusicManager.scheduler.queue.size() + " more queued audio tracks.");
+                .setColor(BotConfiguration.getPromptColor());
+            
+            String appen = "";
+            if (guildMusicManager.scheduler.getLooped()) {
+                appen = "Current track on loop. ";
+            }
+            if (guildMusicManager.scheduler.queue.size() > 0) {
+                builder.setFooter(appen + guildMusicManager.scheduler.queue.size() + " more queued audio tracks.");
+            } else if (guildMusicManager.scheduler.queue.size() == 0) {
+                builder.setFooter(appen + "No more queued audio tracks.");
+            }
         }
 
         event.getChannel().sendMessage(builder.build()).queue();

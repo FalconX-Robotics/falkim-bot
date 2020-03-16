@@ -23,6 +23,9 @@ public class TrackScheduler extends AudioEventAdapter {
     public final BlockingQueue<AudioTrack> queue;
     private final GuildMusicManager guildMusicManager;
 
+    public AudioTrack currentTrack;
+    private boolean isLooped;
+
     /**
      * @param player The audio player this scheduler uses
      */
@@ -38,6 +41,7 @@ public class TrackScheduler extends AudioEventAdapter {
      * @param track The track to play or add to queue.
      */
     public void queue(AudioTrack track) {
+        currentTrack = track;
         // Calling startTrack with the noInterrupt set to true will start the track only
         // if nothing is currently playing. If
         // something is playing, it returns false and does nothing. In that case the
@@ -48,6 +52,14 @@ public class TrackScheduler extends AudioEventAdapter {
         }
     }
 
+    public void setLooped(boolean isLooped) {
+        this.isLooped = isLooped;
+    }
+
+    public boolean getLooped() {
+        return isLooped;
+    }
+
     /**
      * Start the next track, stopping the current one if it is playing.
      */
@@ -56,10 +68,15 @@ public class TrackScheduler extends AudioEventAdapter {
         // In case queue was empty, we are
         // giving null to startTrack, which is a valid argument and will simply stop the
         // player.
-        AudioTrack track = queue.poll();
-        player.startTrack(track, false);
 
-        if (track == null) {
+        if (!isLooped && currentTrack != null) {
+            currentTrack = queue.poll();
+        } else {
+            currentTrack = currentTrack.makeClone();
+        }
+        player.startTrack(currentTrack, false);
+
+        if (currentTrack == null) {
             Music.getInstance().stop.invoke(guildMusicManager.guild);
             EmbedBuilder builder = new EmbedBuilder()
                 .setTitle("Queue ended")
@@ -68,9 +85,18 @@ public class TrackScheduler extends AudioEventAdapter {
             guildMusicManager.channel.sendMessage(builder.build()).queue();
         }
 
-        EmbedBuilder builder = Music.getInstance().getEmbedTrackInfo(track.getInfo())
-            .setColor(Color.ORANGE)
-            .setFooter(queue.size() + " more queued audio tracks.");
+        EmbedBuilder builder = Music.getInstance().getEmbedTrackInfo(currentTrack.getInfo())
+            .setColor(Color.ORANGE);
+        
+        String appen = "";
+        if (guildMusicManager.scheduler.isLooped) {
+            appen = "Current track on loop. ";
+        }
+        if (queue.size() > 0) {
+            builder.setFooter(appen + queue.size() + " more queued audio tracks.");
+        } else if (queue.size() == 0) {
+            builder.setFooter(appen + "No more queued audio tracks.");
+        }
         guildMusicManager.channel.sendMessage(builder.build()).queue();
     }
 
