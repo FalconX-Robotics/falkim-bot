@@ -70,7 +70,7 @@ public class TrackScheduler extends AudioEventAdapter {
 
         EmbedBuilder builder = Music.getInstance().getEmbedTrackInfo(track.getInfo())
             .setColor(Color.ORANGE)
-            .setFooter(queue.size() + 1 + " more queued audio tracks.");
+            .setFooter(queue.size() + " more queued audio tracks.");
         guildMusicManager.channel.sendMessage(builder.build()).queue();
     }
 

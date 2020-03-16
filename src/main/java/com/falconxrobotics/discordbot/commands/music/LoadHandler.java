@@ -27,10 +27,11 @@ public class LoadHandler implements AudioLoadResultHandler {
         scheduler.queue(track);
         EmbedBuilder builder = new EmbedBuilder()
             .setTitle("Queued")
-            .addField("Title", track.getInfo().title, false)
+            .addField("Title", track.getInfo().uri.equals("https://www.youtube.com/watch?v=dQw4w9WgXcQ") ? "furry_p0rn" : track.getInfo().title, false)
             .addField("Duration", Music.getInstance().inReadable(track.getDuration()), false)
             .setColor(BotConfiguration.getSuccessColor())
             .setFooter("It may take a few seconds to load.");
+
         messageChannel.sendMessage(builder.build()).queue();
     }
 

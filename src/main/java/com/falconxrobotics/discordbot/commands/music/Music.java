@@ -65,8 +65,8 @@ public class Music extends CommandGroup {
     public EmbedBuilder getEmbedTrackInfo(AudioTrackInfo info) {
         return new EmbedBuilder()
             .setTitle("Now Playing")
-            .addField("Title", info.title, false)
-            .addField("Author", info.author, false)
+            .addField("Title", (info.uri.equals("https://www.youtube.com/watch?v=dQw4w9WgXcQ")) ? "furry_p0rn" : info.title, false)
+            .addField("Author", (info.uri.equals("https://www.youtube.com/watch?v=dQw4w9WgXcQ")) ? "hot furry dude" : info.author, false)
             .addField("Duration", Music.getInstance().inReadable(info.length), false)
             .addField("URI", info.uri, false)
             .addField("Is Stream", String.valueOf(info.isStream), false);

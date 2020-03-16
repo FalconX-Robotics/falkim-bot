@@ -7,7 +7,7 @@ import net.dv8tion.jda.api.entities.VoiceChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.managers.AudioManager;
 
-public class Play extends Command {
+public class Play extends Command { 
 
     // protected TrackScheduler trackScheduler;
     // protected DefaultAudioPlayerManager playerManager;
@@ -18,7 +18,7 @@ public class Play extends Command {
     protected Play() {
         super("Play", "play");
         setDescription("Plays a track.");
-        addExamples("https://youtu.be/Gz1ldpRfg74", "Gz1ldpRfg74");
+        addExamples("https://youtu.be/Gz1ldpRfg74", "dQw4w9WgXcQ");
         setSyntax("[link] OR [sometimes: video id]");
         setParent(Music::getInstance);
 
@@ -51,6 +51,10 @@ public class Play extends Command {
 
             GuildMusicManager guildMusicManager = Music.getInstance().getGuildMusicManager(event.getGuild());
             guildMusicManager.setChannel(event.getChannel());
+
+            if (arguments[0].equalsIgnoreCase("furry_p0rn")) {
+                arguments[0] = "dQw4w9WgXcQ";
+            }
 
             Music.getInstance().playerManager.loadItemOrdered(guildMusicManager.player, arguments[0], new LoadHandler(guildMusicManager.scheduler, event.getChannel()));
             guildMusicManager.player.addListener(guildMusicManager.scheduler);

@@ -35,7 +35,7 @@ public class Now extends Command {
         } else {
             builder = Music.getInstance().getEmbedTrackInfo(track.getInfo())
                 .setColor(BotConfiguration.getSuccessColor())
-                .setFooter(guildMusicManager.scheduler.queue.size() + 1 + " more queued audio tracks.");
+                .setFooter(guildMusicManager.scheduler.queue.size() + " more queued audio tracks.");
         }
 
         event.getChannel().sendMessage(builder.build()).queue();
