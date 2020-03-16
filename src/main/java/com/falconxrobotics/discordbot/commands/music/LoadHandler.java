@@ -29,7 +29,8 @@ public class LoadHandler implements AudioLoadResultHandler {
             .setTitle("Queued")
             .addField("Title", track.getInfo().title, false)
             .addField("Duration", Music.getInstance().inReadable(track.getDuration()), false)
-            .setColor(BotConfiguration.getSuccessColor());
+            .setColor(BotConfiguration.getSuccessColor())
+            .setFooter("It may take a few seconds to load.");
         messageChannel.sendMessage(builder.build()).queue();
     }
 
