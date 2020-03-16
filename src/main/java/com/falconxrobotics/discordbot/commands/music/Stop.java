@@ -32,6 +32,7 @@ public class Stop extends Command implements Invocable<Guild, Void> {
 
     @Override
     public Void invoke(Guild guild) {
+        Music.getInstance().getGuildMusicManager(guild).scheduler.clearQueue();
         guild.getAudioManager().closeAudioConnection();
 
         Music.getInstance().getGuildMusicManager(guild).channel.sendMessage(

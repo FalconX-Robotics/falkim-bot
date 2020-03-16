@@ -1,5 +1,6 @@
 package com.falconxrobotics.discordbot.commands.music;
 
+import com.github.raybipse.core.BotConfiguration;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.player.event.AudioEventAdapter;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
@@ -41,7 +42,6 @@ public class TrackScheduler extends AudioEventAdapter {
      * @param track The track to play or add to queue.
      */
     public void queue(AudioTrack track) {
-        currentTrack = track;
         // Calling startTrack with the noInterrupt set to true will start the track only
         // if nothing is currently playing. If
         // something is playing, it returns false and does nothing. In that case the
@@ -49,7 +49,13 @@ public class TrackScheduler extends AudioEventAdapter {
         // track goes to the queue instead.
         if (!player.startTrack(track, true)) {
             queue.offer(track);
+        } else {
+            currentTrack = track;
         }
+    }
+
+    public void clearQueue() {
+        queue.clear();
     }
 
     public void setLooped(boolean isLooped) {
@@ -78,16 +84,13 @@ public class TrackScheduler extends AudioEventAdapter {
 
         if (currentTrack == null) {
             Music.getInstance().stop.invoke(guildMusicManager.guild);
-            EmbedBuilder builder = new EmbedBuilder()
-                .setTitle("Queue ended")
-                .setDescription("All songs have finished playing.")
-                .setColor(Color.YELLOW);
+            EmbedBuilder builder = new EmbedBuilder().setTitle("Queue ended")
+                    .setDescription("All songs have finished playing.").setColor(Color.YELLOW);
             guildMusicManager.channel.sendMessage(builder.build()).queue();
         }
 
-        EmbedBuilder builder = Music.getInstance().getEmbedTrackInfo(currentTrack.getInfo())
-            .setColor(Color.ORANGE);
-        
+        EmbedBuilder builder = Music.getInstance().getEmbedTrackInfo(currentTrack.getInfo()).setColor(Color.ORANGE);
+
         String appen = "";
         if (guildMusicManager.scheduler.isLooped) {
             appen = "Current track on loop. ";
@@ -107,5 +110,41 @@ public class TrackScheduler extends AudioEventAdapter {
         if (endReason.mayStartNext) {
             nextTrack();
         }
+    }
+
+    public void pause() {
+        player.setPaused(true);
+    }
+
+    public void resume() {
+        player.setPaused(false);
+    }
+
+    public void togglePaused() {
+        player.setPaused(!player.isPaused());
+    }
+
+    /**
+     * @param player Audio player
+     */
+    public void onPlayerPause(AudioPlayer player) {
+        guildMusicManager.channel.sendMessage(
+            new EmbedBuilder()
+                .setTitle("Paused")
+                .setColor(Color.YELLOW)
+                .build()
+        ).queue();
+    }
+
+    /**
+     * @param player Audio player
+     */
+    public void onPlayerResume(AudioPlayer player) {
+        guildMusicManager.channel.sendMessage(
+            new EmbedBuilder()
+                .setTitle("Resumed")
+                .setColor(BotConfiguration.getSuccessColor())
+                .build()
+        ).queue();
     }
 }

@@ -33,10 +33,11 @@ public class Loop extends Command {
                     getEmbedSimpleError("No Track Playing", "You can only loop a track if a track is playing.").build())
                     .queue();
         } else {
+            String title = guildMusicManager.scheduler.currentTrack.getInfo().title;
             event.getChannel()
                     .sendMessage(new EmbedBuilder()
                             .setTitle("Set Loop to: " + loopTo).setDescription("\""
-                                    + guildMusicManager.scheduler.currentTrack.getInfo().title + "\" will be on loop.")
+                                    + (title.equals("https://www.youtube.com/watch?v=dQw4w9WgXcQ") ? "furry_p0rn" : title) + "\" will be on loop.")
                             .setColor(loopTo ? BotConfiguration.getSuccessColor() : BotConfiguration.getErrorColor())
                             .build())
                     .queue();
