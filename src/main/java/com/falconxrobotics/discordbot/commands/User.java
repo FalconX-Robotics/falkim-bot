@@ -5,19 +5,17 @@ import java.time.format.FormatStyle;
 import java.util.Arrays;
 
 import com.github.raybipse.components.Command;
+import com.github.raybipse.core.BotConfiguration;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
-/**
- * UserInfo
- */
-public class UserInfo extends Command {
+public class User extends Command {
 
-    public UserInfo() {
-        super("UserInfo", "userinfo");
+    public User() {
+        super("User", "user");
         setDescription("Returns details and general information about the bot.");
         setSyntax("[optional: user id; default: invoker]");
         addExamples("", "239501588589182987", "@Ray#6714");
@@ -41,7 +39,8 @@ public class UserInfo extends Command {
             .addField("ID", member.getUser().getId(), true)
             .addField("Is Owner", String.valueOf(member.isOwner()), true)
             .addField("Is Bot", String.valueOf(member.getUser().isBot()), true)
-            .addField("Nickname", member.getEffectiveName(), true);
+            .addField("Nickname", member.getEffectiveName(), true)
+            .setColor(BotConfiguration.getPromptColor());
     }
 
     @Override

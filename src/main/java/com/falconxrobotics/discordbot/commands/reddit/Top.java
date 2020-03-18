@@ -35,7 +35,7 @@ public class Top extends Command {
     private JSONParser parser = new JSONParser();
     private HttpClient client = HttpClient.newHttpClient();
     private Timer timer;
-    private String defaultTimerSubreddit = "PeopleFuckingDying";
+    private String defaultTimerSubreddit = "okbuddyretard";
     private int targetTimerHour = 4;
     private int targetTimerMinute = 20;
 
