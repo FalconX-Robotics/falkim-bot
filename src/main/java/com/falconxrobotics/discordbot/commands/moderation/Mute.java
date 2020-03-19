@@ -15,6 +15,8 @@ import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
+import java.awt.Color;
+
 public class Mute extends Command {
 
     public Mute() {
@@ -127,8 +129,7 @@ public class Mute extends Command {
                 for (Member member : members) {
                     mute(member, amount * type.amount);
                 }
-            
-
+                
                 event.getChannel().sendMessage(
                     new EmbedBuilder()
                         .setTitle("Muted: " + Arrays.toString(members.stream().map(
@@ -137,6 +138,7 @@ public class Mute extends Command {
                             }
                         ).toArray(String[]::new)))
                         .addField("Amount", String.valueOf(amount) + " " + type.display.substring(0, (amount == 1 ? type.display.length()-1 : type.display.length())), false)
+                        .setColor(Color.YELLOW)
                         .build()
                 ).queue();
             } else {
