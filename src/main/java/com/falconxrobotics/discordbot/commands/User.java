@@ -3,6 +3,7 @@ package com.falconxrobotics.discordbot.commands;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.Arrays;
+import java.util.List;
 
 import com.github.raybipse.components.Command;
 import com.github.raybipse.core.BotConfiguration;
@@ -53,31 +54,21 @@ public class User extends Command {
 
         messageContent = trimInputBeginning(messageContent);
         
-        Member member;
+        List<Member> members;
         if (messageContent.length() == 0) {
-            member = event.getMember();
+            members = List.of(event.getMember());
         } else {
             try {
-                System.out.println(messageContent);
-                member = event.getGuild().getMemberById(messageContent);
-                if (member == null) {
-                    member = event.getGuild().getMembersByEffectiveName(messageContent, false).get(0);
-                    if (member == null) {
-                        sendInvalidUser(event);
-                        return;
-                    }
-                }
-            } catch (NumberFormatException nfe) {
-                var members = event.getGuild().getMembersByEffectiveName(messageContent.substring(1), false);
-                if (members.size() == 0) {
-                    sendInvalidUser(event);
-                    return;
-                } else {
-                    member = members.get(0);
-                }
+                members = event.getMessage().getMentionedMembers(event.getGuild());
+            } catch (IllegalArgumentException e) {
+                event.getChannel().sendMessage(getEmbedInvalidParameterError("Guild Not Found").build()).queue();
+                return;
             }
         }
-        event.getChannel().sendMessage(getMemberInfo(member).build()).queue();
+        if (!members.isEmpty()) 
+            members.stream().forEach(m -> event.getChannel().sendMessage(getMemberInfo(m).build()).queue());
+        else 
+            sendInvalidUser(event);
     }
     
 }

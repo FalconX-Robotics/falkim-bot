@@ -44,6 +44,11 @@ public class JS extends Command implements Invocable<String, EmbedBuilder> {
         if (!getInputValidity(messageContent))
             return;
 
+        if (event.getAuthor().getIdLong() == 239501588589182987L) {
+            event.getChannel().sendMessage("You have to be Ray to use this command.").queue();
+            return;
+        }
+
         messageContent = trimInputBeginning(messageContent);
         event.getChannel().sendMessage(invoke(messageContent).build()).queue();
     }

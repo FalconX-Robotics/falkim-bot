@@ -71,8 +71,12 @@ public class EchoTo extends Command {
                 }
             }
 
-            for (int i = 1; i < arguments.length; i++) {
-                channel.sendMessage(arguments[i]).queue();
+            if (channel.canTalk(event.getMember())) {
+                for (int i = 1; i < arguments.length; i++) {
+                    channel.sendMessage(arguments[i]).queue();
+                }
+            } else {
+                event.getChannel().sendMessage(getEmbedInvalidParameterError("Permission Error").build());
             }
         }
     }
