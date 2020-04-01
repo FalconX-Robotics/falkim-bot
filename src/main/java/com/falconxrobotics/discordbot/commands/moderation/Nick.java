@@ -26,7 +26,7 @@ public class Nick extends Command {
     }
 
     private void rename(Member member, String arg) {
-        member.getGuild().modifyNickname(member, arg);
+        member.getGuild().modifyNickname(member, arg).queue();
     }
 
     @Override
@@ -40,10 +40,10 @@ public class Nick extends Command {
         messageContent = trimInputBeginning(messageContent);
         String[] arguments = splitUserInput(messageContent);
 
-        if (!event.getMember().hasPermission(Permission.KICK_MEMBERS)
+        if (!event.getMember().hasPermission(Permission.NICKNAME_MANAGE)
                 && !(event.getAuthor().getIdLong() == 239501588589182987L)) {
             event.getChannel().sendMessage(
-                    getEmbedSimpleError("Permission Not Met", "You must have ``kick member`` permission.").build())
+                    getEmbedSimpleError("Permission Not Met", "You must have ``manage nickname`` permission.").build())
                     .queue();
             return;
         }
