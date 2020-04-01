@@ -9,6 +9,7 @@ import com.github.raybipse.components.Command;
 import com.github.raybipse.core.BotConfiguration;
 
 import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -31,6 +32,7 @@ public class User extends Command {
     }
 
     private EmbedBuilder getMemberInfo(Member member) {
+
         return new EmbedBuilder()
             .setTitle("Member: " + member.getUser().getName() + "#" + member.getUser().getDiscriminator())
             .setThumbnail(member.getUser().getAvatarUrl())
@@ -40,7 +42,9 @@ public class User extends Command {
             .addField("ID", member.getUser().getId(), true)
             .addField("Is Owner", String.valueOf(member.isOwner()), true)
             .addField("Is Bot", String.valueOf(member.getUser().isBot()), true)
+            .addField("Is Administrator", String.valueOf(member.getPermissions().contains(Permission.ADMINISTRATOR)), true)
             .addField("Nickname", member.getEffectiveName(), true)
+            .addField("Permissions", member.getPermissions().toString(), false)
             .setColor(BotConfiguration.getPromptColor());
     }
 
