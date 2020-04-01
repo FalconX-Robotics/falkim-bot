@@ -18,6 +18,8 @@ import com.falconxrobotics.discordbot.commands._Guild;
 import com.falconxrobotics.discordbot.commands.corona.Coronavirus;
 import com.falconxrobotics.discordbot.commands.eval.Evaluate;
 import com.falconxrobotics.discordbot.commands.moderation.Mute;
+import com.falconxrobotics.discordbot.commands.moderation.Nick;
+import com.falconxrobotics.discordbot.commands.moderation.Unmute;
 import com.falconxrobotics.discordbot.commands.music.Music;
 import com.falconxrobotics.discordbot.commands.reddit.Reddit;
 import com.falconxrobotics.discordbot.commands.test.Test;
@@ -66,6 +68,8 @@ public class Bot {
             new Rainbow();
             new _Guild();
             new Mute();
+            new Unmute();
+            new Nick();
             SimpleCommand source = new SimpleCommand("Source", "source", "Gets the source of the bot's code.",
                     List.of(""), "", null);
 
@@ -86,6 +90,22 @@ public class Bot {
 
             jda.getPresence()
                     .setActivity(Activity.listening(BotConfiguration.getBotPrefix() + helpCommand.getPrefix()));
+
+            // for (GuildChannel channel : jda.getGuildById("384880977773854720").getChannels()) {
+            //     if (channel.getId().equals("691704166623477822")) {
+            //         System.out.println(channel.getName());
+            //         channel.getManager().setName("socialism").queue();
+            //         // channel.getManager().setTopic("For the theory and practice of Marxism.").queue();
+            //     }
+            // }
+
+            // AuditLogPaginationAction logs = jda.getGuildById("384880977773854720").retrieveAuditLogs();
+            // for (AuditLogEntry entry : logs) {
+            //     System.out.println("***Type: " + entry.getType() + "\nReason: " + entry.getReason());
+            //     System.out.println("person: " + entry.getUser().getName());
+            // }
+
+    
         } catch (NullPointerException irte) {
             jda.shutdown();
             irte.printStackTrace();
