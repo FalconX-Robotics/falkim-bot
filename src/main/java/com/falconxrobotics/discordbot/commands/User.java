@@ -44,7 +44,7 @@ public class User extends Command {
             .addField("Is Bot", String.valueOf(member.getUser().isBot()), true)
             .addField("Is Administrator", String.valueOf(member.getPermissions().contains(Permission.ADMINISTRATOR)), true)
             .addField("Nickname", member.getEffectiveName(), true)
-            .addField("Permissions", member.getPermissions().toString(), false)
+            .addField("Permissions (" + member.getPermissions().size() + ")", member.getPermissions().toString(), false)
             .setColor(BotConfiguration.getPromptColor());
     }
 
