@@ -90,21 +90,6 @@ public class Bot {
 
             jda.getPresence()
                     .setActivity(Activity.listening(BotConfiguration.getBotPrefix() + helpCommand.getPrefix()));
-
-            // for (GuildChannel channel : jda.getGuildById("384880977773854720").getChannels()) {
-            //     if (channel.getId().equals("691704166623477822")) {
-            //         System.out.println(channel.getName());
-            //         channel.getManager().setName("socialism").queue();
-            //         // channel.getManager().setTopic("For the theory and practice of Marxism.").queue();
-            //     }
-            // }
-
-            // AuditLogPaginationAction logs = jda.getGuildById("384880977773854720").retrieveAuditLogs();
-            // for (AuditLogEntry entry : logs) {
-            //     System.out.println("***Type: " + entry.getType() + "\nReason: " + entry.getReason());
-            //     System.out.println("person: " + entry.getUser().getName());
-            // }
-
     
         } catch (NullPointerException irte) {
             jda.shutdown();
@@ -112,16 +97,4 @@ public class Bot {
             System.exit(1);
         }
     }
-
-    // public static CommandGroup[] getAllCommandGroups() {
-    // return new CommandGroup[] {
-    // Test.getInstance(), Reddit.getInstance()
-    // };
-    // }
-
-    // public static Command[] getAllStandaloneCommands() {
-    // return new Command[] {
-    // helpCommand, dice, latex, ping
-    // };
-    // }
 }

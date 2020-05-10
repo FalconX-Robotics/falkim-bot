@@ -20,7 +20,7 @@ public class All extends Command implements Invocable<Void, EmbedBuilder> {
 
     private JSONParser parser = new JSONParser();
     private HttpClient client = HttpClient.newHttpClient();
-    private URI fetchURI = URI.create("https://corona.lmao.ninja/all");
+    private URI fetchURI = URI.create("https://corona.lmao.ninja/v2/all");
 
     protected All() {
         super("All", "all");

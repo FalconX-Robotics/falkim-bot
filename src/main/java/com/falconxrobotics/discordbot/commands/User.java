@@ -32,7 +32,6 @@ public class User extends Command {
     }
 
     private EmbedBuilder getMemberInfo(Member member) {
-
         return new EmbedBuilder()
             .setTitle("Member: " + member.getUser().getName() + "#" + member.getUser().getDiscriminator())
             .setThumbnail(member.getUser().getAvatarUrl())

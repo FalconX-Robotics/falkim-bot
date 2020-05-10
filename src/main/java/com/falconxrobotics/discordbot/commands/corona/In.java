@@ -22,7 +22,7 @@ public class In extends Command implements Invocable<String, EmbedBuilder> {
 
     private JSONParser parser = new JSONParser();
     private HttpClient client = HttpClient.newHttpClient();
-    private URI fetchURI = URI.create("https://corona.lmao.ninja/countries");
+    private URI fetchURI = URI.create("https://corona.lmao.ninja/v2/countries");
 
     protected In() {
         super("In", "in");
@@ -55,8 +55,18 @@ public class In extends Command implements Invocable<String, EmbedBuilder> {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             JSONArray json = (JSONArray) parser.parse(response.body());
 
-            Optional<JSONObject> optional = json.stream().filter((e) -> ((String) ((JSONObject) e).get("country")).equalsIgnoreCase(country))
-                    .findFirst();
+            Optional<JSONObject> optional = json.stream().filter((e) -> {
+                if (((String) ((JSONObject) e).get("country")).equalsIgnoreCase(country)) return true;
+                boolean[] found = new boolean[1];
+                ((JSONObject) ((JSONObject) e).get("countryInfo")).forEach((k, v) -> {
+                    if (!k.equals("lat") && !k.equals("long") && !k.equals("flag")) {
+                        if (v != null && v.equals(country)) {
+                            found[0] = true;
+                        }
+                    }
+                });
+                return found[0];
+            }).findFirst();
             
             if (!optional.isPresent()) {
                 return getEmbedInvalidParameterError("Invalid Country Name");
@@ -64,9 +74,10 @@ public class In extends Command implements Invocable<String, EmbedBuilder> {
                 JSONObject info = optional.get();
                 EmbedBuilder builder = new EmbedBuilder()
                     .setTitle("COVID-19 cases in " + (String) info.get("country"))
-                    .setFooter("Source: https://www.worldometers.info/coronavirus/");
+                    .setFooter("Source: https://www.worldometers.info/coronavirus/")
+                    .setThumbnail(((JSONObject) info.get("countryInfo")).get("flag").toString());
                 info.forEach((k, v) -> {
-                    if (!k.equals("country")) {
+                    if (!k.equals("country") && !k.equals("countryInfo") && !k.equals("updated")) {
                         builder.addField(splitCamelCase(k.toString()), v.toString(), false);
                     }
                 });

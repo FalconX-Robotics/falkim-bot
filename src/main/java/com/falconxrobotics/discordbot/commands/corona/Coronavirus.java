@@ -31,7 +31,9 @@ public class Coronavirus extends CommandGroup {
 
     private void setUpTimer() {
         timer = new Timer();
-        timer.schedule(new TimerTask() {
+        TimerTask task = new TimerTask() {
+            private TextChannel channel = BotConfiguration.getJDA().getTextChannelById("533820195949510666");
+
             public void run() {
                 Calendar cal = Calendar.getInstance();
                 cal.setTime(Date.from(Instant.now()));
@@ -39,15 +41,19 @@ public class Coronavirus extends CommandGroup {
                 int hour = cal.get(Calendar.HOUR_OF_DAY);
                 int minutes = cal.get(Calendar.MINUTE);
                 if ((hour == targetTimerHour) && minutes == targetTimerMinute) {
-                    TextChannel channel = BotConfiguration.getJDA().getTextChannelById(533820195949510666L);
-                    channel.sendMessage("COVID-19 update:")
-                        .queue(m -> {
-                            channel.sendMessage(all.invoke(null).build()).queue();;
-                            channel.sendMessage(top.invoke("USA").build()).queue();
-                        });
+                    sendMessage();
                 }
             }
-        }, 0, 60 * 1000);
+
+            public void sendMessage() {
+                channel.sendMessage("COVID-19 update")
+                    .queue(m -> {
+                        channel.sendMessage(all.invoke(null).build()).queue();;
+                        channel.sendMessage(top.invoke("USA").build()).queue();
+                    });
+            }
+        };
+        timer.schedule(task, 0, 60 * 1000);
     }
 
     /**
