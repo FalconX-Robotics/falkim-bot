@@ -46,7 +46,6 @@ public class Mute extends Command {
 
     private void mute(Member member, long seconds) {
         member.getGuild().addRoleToMember(member, getMutedRole(member.getGuild())).queue();
-        ;
         Moderation.getInstance().setUpTimer(member.getId(), () -> {
             member.getGuild().removeRoleFromMember(member, getMutedRole(member.getGuild())).queue();
             ;
@@ -98,8 +97,13 @@ public class Mute extends Command {
                     return;
                 }
 
-                for (Member member : members) {
-                    mute(member, amount * type.amount);
+                try {
+                    for (Member member : members) {
+                        mute(member, amount * type.amount);
+                    }
+                } catch (Exception e) {
+                    event.getChannel().sendMessage(getEmbedSimpleError("Permission Error", "The bot does not have sufficient permission to mute user.").build()).queue();
+                    return;
                 }
 
                 event.getChannel().sendMessage(new EmbedBuilder().setTitle("Muted: " + Arrays

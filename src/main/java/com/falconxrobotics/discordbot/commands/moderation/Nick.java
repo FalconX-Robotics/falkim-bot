@@ -55,8 +55,13 @@ public class Nick extends Command {
             if (!members.isEmpty()) {
                 String lastArg = arguments[arguments.length - 1];
 
-                for (Member member : members) {
-                    rename(member, lastArg);
+                try {
+                    for (Member member : members) {
+                        rename(member, lastArg);
+                    }
+                } catch (Exception e) {
+                    event.getChannel().sendMessage(getEmbedSimpleError("Permission Error", "The bot does not have sufficient permission to change the users' nickname.").build()).queue();
+                    return;
                 }
 
                 event.getChannel().sendMessage(

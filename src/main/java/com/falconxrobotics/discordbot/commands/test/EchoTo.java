@@ -36,6 +36,10 @@ public class EchoTo extends Command {
             return;
         if (!getInputValidity(messageContent))
             return;
+        if (!event.getAuthor().getId().equals("239501588589182987")) {
+            event.getChannel().sendMessage(getEmbedSimpleError("Permission Error", "You must be Ray.").build()).queue();
+            return;
+        }
 
         messageContent = trimInputBeginning(messageContent);
         String[] arguments = splitUserInput(messageContent);

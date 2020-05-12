@@ -62,8 +62,14 @@ public class Unmute extends Command {
         } else {
             List<Member> members = event.getMessage().getMentionedMembers(event.getGuild());
             if (!members.isEmpty()) {
-                for (Member member : members) {
-                    unmute(member);
+
+                try {
+                    for (Member member : members) {
+                        unmute(member);
+                    }
+                } catch (Exception e) {
+                    event.getChannel().sendMessage(getEmbedSimpleError("Permission Error", "The bot does not have sufficient permission to unmute user.").build()).queue();
+                    return;
                 }
                 
                 event.getChannel().sendMessage(
