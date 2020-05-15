@@ -1,10 +1,7 @@
 package com.falconxrobotics.discordbot.commands.moderation;
 
-import java.util.List;
-
 import com.github.raybipse.components.Command;
 
-import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
