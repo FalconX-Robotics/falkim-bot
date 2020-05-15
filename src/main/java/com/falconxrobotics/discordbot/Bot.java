@@ -19,6 +19,7 @@ import com.falconxrobotics.discordbot.commands.corona.Coronavirus;
 import com.falconxrobotics.discordbot.commands.eval.Evaluate;
 import com.falconxrobotics.discordbot.commands.moderation.Mute;
 import com.falconxrobotics.discordbot.commands.moderation.Nick;
+import com.falconxrobotics.discordbot.commands.moderation.Purge;
 import com.falconxrobotics.discordbot.commands.moderation.Unmute;
 import com.falconxrobotics.discordbot.commands.music.Music;
 import com.falconxrobotics.discordbot.commands.reddit.Reddit;
@@ -70,6 +71,7 @@ public class Bot {
             new Mute();
             new Unmute();
             new Nick();
+            new Purge();
             SimpleCommand source = new SimpleCommand("Source", "source", "Gets the source of the bot's code.",
                     List.of(""), "", null);
 
