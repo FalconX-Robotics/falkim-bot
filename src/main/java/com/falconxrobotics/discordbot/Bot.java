@@ -42,6 +42,7 @@ public class Bot extends ListenerAdapter {
     private static JDA jda;
 
     private Bot() {
+        jda.addEventListener(this);
     }
 
     public static void main(String[] args) throws LoginException, InterruptedException {
@@ -54,6 +55,7 @@ public class Bot extends ListenerAdapter {
         BotConfiguration.setJDA(jda);
 
         try {
+            initAllCommands();
             jda.getPresence()
                     .setActivity(Activity.listening(BotConfiguration.getBotPrefix() + Help.getInstance().getPrefix()));
     
@@ -67,7 +69,7 @@ public class Bot extends ListenerAdapter {
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
         if (event.getMessage().isMentioned(jda.getSelfUser(), MentionType.USER)) {
-            event.getChannel().sendMessage("Use &help");
+            event.getChannel().sendMessage("Use &help").queue();
         }
     }
 
