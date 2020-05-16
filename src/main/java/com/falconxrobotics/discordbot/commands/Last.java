@@ -27,12 +27,14 @@ public class Last extends Command {
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
         long channelId = event.getChannel().getIdLong();
-        ArrayList<MessageReceivedEvent> pastEvents = lastMessageEvents.getOrDefault(channelId, new ArrayList<MessageReceivedEvent>(11));
-        pastEvents.add(0, event);
+        ArrayList<MessageReceivedEvent> pastEvents = lastMessageEvents.getOrDefault(channelId, new ArrayList<MessageReceivedEvent>());
         lastMessageEvents.put(channelId, pastEvents);
-        if (lastMessageEvents.get(channelId).size() > 50) {
-            lastMessageEvents.get(event.getChannel().getIdLong()).remove(lastMessageEvents.size() - 1);
+        pastEvents.add(0, event);
+
+        if (lastMessageEvents.get(channelId).size() > 52) {
+            pastEvents.remove(pastEvents.size() - 1);
         }
+
         String messageContent = event.getMessage().getContentDisplay();
         if (event.getAuthor().isBot())
             return;
