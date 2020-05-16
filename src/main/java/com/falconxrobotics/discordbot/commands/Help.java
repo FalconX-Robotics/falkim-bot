@@ -17,11 +17,20 @@ import net.dv8tion.jda.api.utils.MarkdownUtil;
  */
 public class Help extends Command {
 
-    public Help() {
+    private static Help instance;
+
+    private Help() {
         super("Help", "help");
         setDescription("Returns details and general information about the bot.");
         setSyntax("[optional: command] OR [command group] [command]");
         addExamples("");
+    }
+
+    public static Help getInstance() {
+        if (instance == null) {
+            instance = new Help();
+        }
+        return instance;
     }
 
     private void onNoArgument(MessageReceivedEvent event) {
