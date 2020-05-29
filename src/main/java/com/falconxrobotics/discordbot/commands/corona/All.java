@@ -6,6 +6,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
+import com.falconxrobotics.discordbot.Bot;
 import com.github.raybipse.components.Command;
 import com.github.raybipse.components.Invocable;
 
@@ -39,9 +40,9 @@ public class All extends Command implements Invocable<Void, EmbedBuilder> {
             EmbedBuilder builder = new EmbedBuilder()
                 .setTitle("COVID-19 in the Globe");
 
-            builder.addField("Cases", json.get("cases").toString(), false);
-            builder.addField("Deaths", json.get("deaths").toString(), false);
-            builder.addField("Recovered", json.get("recovered").toString(), false);
+            builder.addField("Cases", Bot.formatNumber(json.get("cases").toString()), false);
+            builder.addField("Deaths", Bot.formatNumber(json.get("deaths").toString()), false);
+            builder.addField("Recovered", Bot.formatNumber(json.get("recovered").toString()), false);
             builder.setFooter("Source: https://www.worldometers.info/coronavirus/");
             return builder;
             

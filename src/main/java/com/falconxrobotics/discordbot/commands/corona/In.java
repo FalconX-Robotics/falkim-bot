@@ -7,6 +7,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Optional;
 
+import com.falconxrobotics.discordbot.Bot;
 import com.github.raybipse.components.Command;
 import com.github.raybipse.components.Invocable;
 
@@ -78,7 +79,7 @@ public class In extends Command implements Invocable<String, EmbedBuilder> {
                     .setThumbnail(((JSONObject) info.get("countryInfo")).get("flag").toString());
                 info.forEach((k, v) -> {
                     if (!k.equals("country") && !k.equals("countryInfo") && !k.equals("updated")) {
-                        builder.addField(splitCamelCase(k.toString()), v.toString(), false);
+                        builder.addField(splitCamelCase(k.toString()), Bot.formatNumber(v.toString()), true);
                     }
                 });
                 return builder;

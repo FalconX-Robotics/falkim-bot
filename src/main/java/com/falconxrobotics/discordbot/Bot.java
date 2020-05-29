@@ -1,5 +1,6 @@
 package com.falconxrobotics.discordbot;
 
+import java.text.NumberFormat;
 import java.util.List;
 
 import javax.security.auth.login.LoginException;
@@ -23,6 +24,7 @@ import com.falconxrobotics.discordbot.commands.moderation.Purge;
 import com.falconxrobotics.discordbot.commands.moderation.Unmute;
 import com.falconxrobotics.discordbot.commands.music.Music;
 import com.falconxrobotics.discordbot.commands.reddit.Reddit;
+import com.falconxrobotics.discordbot.commands.spacex.SpaceX;
 import com.falconxrobotics.discordbot.commands.test.Test;
 import com.github.raybipse.components.SimpleCommand;
 import com.github.raybipse.core.BotConfiguration;
@@ -66,6 +68,15 @@ public class Bot extends ListenerAdapter {
         }
     }
 
+    public static String formatNumber(String input) {
+        try {
+            double num = Double.parseDouble(input);
+            return NumberFormat.getInstance().format(num);
+        } catch (NumberFormatException nfe) {
+            return input;
+        }
+    }
+
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
         if (event.getMessage().isMentioned(jda.getSelfUser(), MentionType.USER)) {
@@ -79,6 +90,7 @@ public class Bot extends ListenerAdapter {
         Music.getInstance();
         Coronavirus.getInstance();
         Evaluate.getInstance();
+        SpaceX.getInstance();
         new Dice();
         new LaTex();
         new Ping();
@@ -94,6 +106,7 @@ public class Bot extends ListenerAdapter {
         new Nick();
         new Purge();
         new Bot();
+        // new Rotate();
         SimpleCommand source = new SimpleCommand("Source", "source", "Gets the source of the bot's code.",
                 List.of(""), "", null);
 
