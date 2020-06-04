@@ -17,6 +17,9 @@ import org.json.simple.parser.ParseException;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
+/**
+ * @author RayBipse
+ */
 public class All extends Command implements Invocable<Void, EmbedBuilder> {
 
     private JSONParser parser = new JSONParser();

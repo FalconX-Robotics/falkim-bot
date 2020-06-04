@@ -13,6 +13,9 @@ import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
+/**
+ * @author RayBipse
+ */
 public class _Guild extends Command implements Invocable<Guild, EmbedBuilder> {
 
     public _Guild() {

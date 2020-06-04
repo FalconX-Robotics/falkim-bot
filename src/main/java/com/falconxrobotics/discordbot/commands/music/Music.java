@@ -14,8 +14,6 @@ import net.dv8tion.jda.api.entities.Guild;
 
 
 /**
- * A command group that contains commands that is used to play music.
- * 
  * @author RayBipse
  */
 public class Music extends CommandGroup {

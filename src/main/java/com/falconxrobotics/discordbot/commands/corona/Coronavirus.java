@@ -12,6 +12,9 @@ import com.github.raybipse.core.BotConfiguration;
 
 import net.dv8tion.jda.api.entities.TextChannel;
 
+/**
+ * @author RayBipse
+ */
 public class Coronavirus extends CommandGroup {
 
     private static Coronavirus instance;

@@ -7,6 +7,9 @@ import net.dv8tion.jda.api.entities.VoiceChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.managers.AudioManager;
 
+/**
+ * @author RayBipse
+ */
 public class Play extends Command { 
 
     // protected TrackScheduler trackScheduler;

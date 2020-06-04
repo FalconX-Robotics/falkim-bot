@@ -2,6 +2,9 @@ package com.falconxrobotics.discordbot.commands.eval;
 
 import com.github.raybipse.components.CommandGroup;
 
+/**
+ * @author RayBipse
+ */
 public class Evaluate extends CommandGroup {
     private static Evaluate instance;
     private JS js = new JS();

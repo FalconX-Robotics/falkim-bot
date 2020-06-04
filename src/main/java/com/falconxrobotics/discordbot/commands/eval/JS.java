@@ -10,6 +10,9 @@ import com.github.raybipse.components.Invocable;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
+/**
+ * @author RayBipse
+ */
 public class JS extends Command implements Invocable<String, EmbedBuilder> {
 
     private ScriptEngineManager mgr = new ScriptEngineManager();

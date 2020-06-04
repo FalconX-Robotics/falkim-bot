@@ -5,14 +5,8 @@ import java.net.URL;
 
 import com.github.raybipse.components.Command;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
-
+// LaTex http://latex.codecogs.com/png.latex?123
 /**
- * LaTex http://latex.codecogs.com/png.latex?123
- */
-
-/**
- * A command that supplies a random value.
- * 
  * @author RayBipse
  */
 public class LaTex extends Command {

@@ -5,8 +5,6 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 /**
- * A command that repeats the arguments of the input.
- * 
  * @author RayBipse
  */
 public class Echo extends Command {

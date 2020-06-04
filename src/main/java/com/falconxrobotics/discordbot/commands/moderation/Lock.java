@@ -2,9 +2,11 @@ package com.falconxrobotics.discordbot.commands.moderation;
 
 import com.github.raybipse.components.Command;
 
-import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
+/**
+ * @author RayBipse
+ */
 public class Lock extends Command {
 
     public Lock() {
@@ -15,9 +17,9 @@ public class Lock extends Command {
 
     }
 
-    private void lock(TextChannel channel) {
+    // private void lock(TextChannel channel) {
         // channel.putPermissionOverride(channel.getGuild().getRole).deny(Permission.MESSAGE_WRITE).queue();
-    }
+    // }
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {

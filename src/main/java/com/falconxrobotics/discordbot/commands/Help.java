@@ -11,8 +11,6 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.utils.MarkdownUtil;
 
 /**
- * A help command that tells general information about the bot.
- * 
  * @author RayBipse
  */
 public class Help extends Command {

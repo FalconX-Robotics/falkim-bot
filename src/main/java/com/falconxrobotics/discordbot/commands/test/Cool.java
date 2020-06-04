@@ -11,8 +11,6 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.exceptions.PermissionException;
 
 /**
- * A temporary command that is used to test new features.
- * 
  * @author RayBipse
  */
 public class Cool extends Command {

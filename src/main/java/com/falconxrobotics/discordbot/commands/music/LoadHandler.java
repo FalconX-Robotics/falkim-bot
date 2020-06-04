@@ -10,7 +10,7 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.MessageChannel;
 
 /**
- * LoadHandler
+ * @author RayBipse
  */
 public class LoadHandler implements AudioLoadResultHandler {
 

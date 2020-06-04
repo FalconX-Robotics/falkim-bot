@@ -11,7 +11,7 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 /**
- * Ping is a command that is used for checking if the bot is responsive.
+ * @author RayBipse
  */
 public class Last extends Command {
 

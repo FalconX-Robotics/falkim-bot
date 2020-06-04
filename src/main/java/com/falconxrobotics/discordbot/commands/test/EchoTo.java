@@ -6,8 +6,6 @@ import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 /**
- * A command that repeats the arguments of the input to a specific channel.
- * 
  * @author RayBipse
  */
 public class EchoTo extends Command {

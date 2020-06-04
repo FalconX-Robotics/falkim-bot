@@ -13,6 +13,9 @@ import com.github.raybipse.components.Command;
 
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
+/**
+ * @author RayBipse
+ */
 public class Rotate extends Command {
 
     public Rotate() {

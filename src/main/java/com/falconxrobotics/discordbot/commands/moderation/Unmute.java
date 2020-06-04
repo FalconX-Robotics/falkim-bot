@@ -13,6 +13,9 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.awt.Color;
 
+/**
+ * @author RayBipse
+ */
 public class Unmute extends Command {
 
     public Unmute() {

@@ -6,8 +6,6 @@ import com.github.raybipse.components.Command;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 /**
- * A command that supplies a random value.
- * 
  * @author RayBipse
  */
 public class Dice extends Command {

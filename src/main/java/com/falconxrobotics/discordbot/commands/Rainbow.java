@@ -4,6 +4,9 @@ import com.github.raybipse.components.Command;
 
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
+/**
+ * @author RayBipse
+ */
 public class Rainbow extends Command {
 
     private String[] emojis = new String[] {"🟥", "🟧", "🟨", "🟩", "🟦", "🟪"};

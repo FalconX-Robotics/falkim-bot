@@ -1,6 +1,5 @@
 package com.falconxrobotics.discordbot;
 
-import java.nio.channels.Channel;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,8 +34,6 @@ import com.github.raybipse.core.BotConfiguration;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
-import net.dv8tion.jda.api.entities.GuildChannel;
-import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message.MentionType;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;

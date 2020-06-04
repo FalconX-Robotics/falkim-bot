@@ -3,9 +3,6 @@ package com.falconxrobotics.discordbot.commands.test;
 import com.github.raybipse.components.CommandGroup;
 
 /**
- * A command group that contains commands that are used for testing and
- * debugging the application.
- * 
  * @author RayBipse
  */
 public class Test extends CommandGroup {

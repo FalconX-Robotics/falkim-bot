@@ -11,6 +11,9 @@ import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.entities.TextChannel;
 
+/**
+ * @author RayBipse
+ */
 public class Moderation {
 
     private static Moderation instance;
