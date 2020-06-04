@@ -1,7 +1,6 @@
 package com.falconxrobotics.discordbot.commands;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.function.Consumer;
 
 import com.github.raybipse.components.Command;
