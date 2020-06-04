@@ -26,8 +26,6 @@ import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 /**
- * A command the top post from a subreddit.
- * 
  * @author RayBipse
  */
 public class Top extends Command {

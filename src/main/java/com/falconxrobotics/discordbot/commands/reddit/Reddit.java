@@ -3,8 +3,6 @@ package com.falconxrobotics.discordbot.commands.reddit;
 import com.github.raybipse.components.CommandGroup;
 
 /**
- * A command group that contains commands that are used for interactions with Reddit.
- * 
  * @author RayBipse
  */
 public class Reddit extends CommandGroup {
