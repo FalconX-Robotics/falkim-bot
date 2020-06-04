@@ -1,6 +1,8 @@
 package com.falconxrobotics.discordbot;
 
+import java.nio.channels.Channel;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.security.auth.login.LoginException;
@@ -14,6 +16,7 @@ import com.falconxrobotics.discordbot.commands.Ping;
 import com.falconxrobotics.discordbot.commands.Poll;
 import com.falconxrobotics.discordbot.commands.Pray;
 import com.falconxrobotics.discordbot.commands.Rainbow;
+import com.falconxrobotics.discordbot.commands.SelfAssign;
 import com.falconxrobotics.discordbot.commands.User;
 import com.falconxrobotics.discordbot.commands._Guild;
 import com.falconxrobotics.discordbot.commands.corona.Coronavirus;
@@ -32,6 +35,8 @@ import com.github.raybipse.core.BotConfiguration;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.entities.GuildChannel;
+import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message.MentionType;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -66,7 +71,34 @@ public class Bot extends ListenerAdapter {
             irte.printStackTrace();
             System.exit(1);
         }
+
+        // for (GuildChannel channel : jda.getGuildById("384880977773854720").getChannels()) {
+            // System.out.println(channel.getName());
+        // }
+
+        // for (Member m : jda.getGuildById("384880977773854720").getMembers()) {
+        //     jda.getGuildById("384880977773854720").removeRoleFromMember(m, jda.getRoleById("611747175944159232")).queue();
+        // }
+
+        // jda.getTextChannelById("533912803048685578").sendMessage(GetStringArray(jda.getGuildById("384880977773854720").getChannels())).queue();
     }
+
+    public static String[] GetStringArray(ArrayList<String> arr) 
+    { 
+  
+        // declaration and initialise String Array 
+        String str[] = new String[arr.size()]; 
+  
+        // ArrayList to Array Conversion 
+        for (int j = 0; j < arr.size(); j++) { 
+  
+            // Assign each value to String array 
+            str[j] = arr.get(j); 
+        } 
+  
+        return str; 
+    } 
+  
 
     public static String formatNumber(String input) {
         try {
@@ -106,6 +138,7 @@ public class Bot extends ListenerAdapter {
         new Nick();
         new Purge();
         new Bot();
+        new SelfAssign();
         // new Rotate();
         SimpleCommand source = new SimpleCommand("Source", "source", "Gets the source of the bot's code.",
                 List.of(""), "", null);
