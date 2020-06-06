@@ -9,6 +9,9 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
+/**
+ * @author RayBipse
+ */
 public class Stop extends Command implements Invocable<Guild, Void> {
 
     protected Stop() {

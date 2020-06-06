@@ -14,6 +14,9 @@ import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
+/**
+ * @author RayBipse
+ */
 public class User extends Command {
 
     public User() {
