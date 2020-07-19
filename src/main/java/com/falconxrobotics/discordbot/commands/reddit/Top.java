@@ -44,7 +44,7 @@ public class Top extends Command {
         setSyntax("[subreddit name]");
         setParent(Reddit::getInstance);
 
-        setUpTimer();
+        // setUpTimer();
     }
 
     private void setUpTimer() {
