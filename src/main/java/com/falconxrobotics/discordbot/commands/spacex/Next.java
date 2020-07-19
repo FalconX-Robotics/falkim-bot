@@ -42,7 +42,7 @@ public class Next extends Command {
         setSyntax("");
         setParent(SpaceX::getInstance);
 
-        setUpTimer();
+        // setUpTimer();
     }
 
     private void setUpTimer() {
