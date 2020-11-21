@@ -34,7 +34,7 @@ public class EchoTo extends Command {
             return;
         if (!getInputValidity(messageContent))
             return;
-        if (!event.getAuthor().getId().equals("239501588589182987")) {
+        if (!event.getAuthor().getId().equals("590931976182169600")) {
             event.getChannel().sendMessage(getEmbedSimpleError("Permission Error", "You must be Ray.").build()).queue();
             return;
         }
@@ -63,7 +63,7 @@ public class EchoTo extends Command {
                 } catch (NumberFormatException nfe) {
                     try {
                         channel = event.getGuild().getTextChannelsByName(arguments[0], true).get(0);
-                    } catch (IllegalStateException ise) {
+                    } catch (IllegalStateException | IndexOutOfBoundsException ise) {
                         event.getChannel().sendMessage(getEmbedInvalidParameterError("Channel not found.").build()).queue();
                         return;
                     }

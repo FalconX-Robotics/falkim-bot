@@ -55,7 +55,7 @@ public class Play extends Command {
             GuildMusicManager guildMusicManager = Music.getInstance().getGuildMusicManager(event.getGuild());
             guildMusicManager.setChannel(event.getChannel());
 
-            if (arguments[0].equalsIgnoreCase("furry_p0rn")) {
+            if (arguments[0].equalsIgnoreCase("rick")) {
                 arguments[0] = "dQw4w9WgXcQ";
             }
 
@@ -69,11 +69,9 @@ public class Play extends Command {
      * @return null if not successful
      */
     private VoiceChannel getUserVoiceChannel(AudioManager audioManager, Member user) {
-        if (!audioManager.isAttemptingToConnect()) {
-            for (VoiceChannel voiceChannel : audioManager.getGuild().getVoiceChannels()) {
-                if (voiceChannel.getMembers().contains(user)) {
-                    return voiceChannel;
-                }
+        for (VoiceChannel voiceChannel : audioManager.getGuild().getVoiceChannels()) {
+            if (voiceChannel.getMembers().contains(user)) {
+                return voiceChannel;
             }
         }
         return null;

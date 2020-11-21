@@ -59,8 +59,6 @@ public class Rotate extends Command {
         String[] arguments = splitUserInput(messageContent);
 
 
-        System.out.println("A");
-
         if (arguments.length == 0) {
             event.getChannel().sendMessage(getEmbedMissingArguments().build()).queue();
         } else {
@@ -68,7 +66,6 @@ public class Rotate extends Command {
             try {
                 img = getLastImage();
                 img = rotateCw(img);
-                System.out.println("B");
 
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 ImageIO.write(img, "jpg", baos);

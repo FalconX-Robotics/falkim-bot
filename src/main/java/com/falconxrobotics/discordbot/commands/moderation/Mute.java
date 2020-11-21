@@ -67,7 +67,7 @@ public class Mute extends Command {
         String[] arguments = splitUserInput(messageContent);
 
         if (!event.getMember().hasPermission(Permission.KICK_MEMBERS)
-                && !(event.getAuthor().getIdLong() == 239501588589182987L)) {
+                && !(event.getAuthor().getIdLong() == 590931976182169600L)) {
             event.getChannel().sendMessage(
                     getEmbedSimpleError("Permission Not Met", "You must have ``kick member`` permission.").build())
                     .queue();

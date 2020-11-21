@@ -23,7 +23,7 @@ public class User extends Command {
         super("User", "user");
         setDescription("Returns details and general information about the bot.");
         setSyntax("[optional: user id; default: invoker]");
-        addExamples("", "239501588589182987", "@Ray#6714");
+        addExamples("", "590931976182169600", "@Dog#6169");
     }
 
     private void sendInvalidUser(MessageReceivedEvent event) {

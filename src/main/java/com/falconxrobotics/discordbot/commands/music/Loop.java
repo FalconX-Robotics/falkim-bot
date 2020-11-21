@@ -40,7 +40,7 @@ public class Loop extends Command {
             event.getChannel()
                     .sendMessage(new EmbedBuilder()
                             .setTitle("Set Loop to: " + loopTo).setDescription("\""
-                                    + (title.equals("https://www.youtube.com/watch?v=dQw4w9WgXcQ") ? "furry_p0rn" : title) + "\" will be on loop.")
+                                    + (title.equals("https://www.youtube.com/watch?v=dQw4w9WgXcQ") ? "rick" : title) + "\" will be on loop.")
                             .setColor(loopTo ? BotConfiguration.getSuccessColor() : BotConfiguration.getErrorColor())
                             .build())
                     .queue();

@@ -54,15 +54,12 @@ public class Bot extends ListenerAdapter {
             throw new LoginException("BOT_TOKEN environment variable must be set for the bot token.");
         }
 
-        JDABuilder jdaBuilder = new JDABuilder(System.getenv("BOT_TOKEN"));
-        jda = jdaBuilder.build().awaitReady();
+        jda = JDABuilder.createDefault(System.getenv("BOT_TOKEN")).build().awaitReady();
         BotConfiguration.setJDA(jda);
-
         try {
             initAllCommands();
             jda.getPresence()
                     .setActivity(Activity.listening(BotConfiguration.getBotPrefix() + Help.getInstance().getPrefix()));
-    
         } catch (NullPointerException irte) {
             jda.shutdown();
             irte.printStackTrace();
@@ -119,7 +116,7 @@ public class Bot extends ListenerAdapter {
         Music.getInstance();
         Coronavirus.getInstance();
         Evaluate.getInstance();
-        SpaceX.getInstance();
+        // SpaceX.getInstance();
         new Dice();
         new LaTex();
         new Ping();
